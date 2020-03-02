@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmotionSelector">
+
+    <TextView
+        android:id="@+id/selection_prompt"
+        android:layout_width="377dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/selection_prompt"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/emotion_enraged"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/enraged"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
+
+    <Button
+        android:id="@+id/emotion_irritated"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/anger5"
+        android:text="@string/irritated"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_aggrevated"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <Button
+        android:id="@+id/emotion_annoyed"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/anger6"
+        android:text="@string/annoyed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_irritated"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_frustrated"
+        app:layout_constraintVertical_bias="0.013" />
+
+    <Button
+        android:id="@+id/emotion_aggrevated"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/anger3"
+        android:text="@string/aggrevated"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_enraged" />
+
+    <Button
+        android:id="@+id/emotion_irate"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/irate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_enraged"
+        app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
+
+    <Button
+        android:id="@+id/emotion_frustrated"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/anger4"
+        android:text="@string/frustrated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_aggrevated"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_irate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

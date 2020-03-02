@@ -2,5 +2,13 @@
     <string name="app_name">PERLS</string>
     <string name="exercise">EXERCISE</string>
     <string name="review">REVIEW REFLECTION</string>
+    <string name="selection_prompt">Which of the following best describes how you are feeling?</string>
+    <string name="emotion">Emotion</string>
+    <string name="annoyed">Annoyed</string>
+    <string name="irritated">Irritated</string>
+    <string name="frustrated">Frustrated</string>
+    <string name="aggrevated">Aggrevated</string>
+    <string name="irate">Irate</string>
+    <string name="enraged">Enraged</string>
 
 </resources>
