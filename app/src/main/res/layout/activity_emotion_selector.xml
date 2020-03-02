@@ -20,78 +20,78 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/emotion_1"
+        android:id="@+id/emotion_enraged"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/holo_red_dark"
-        android:text="@string/emotion"
+        android:text="@string/enraged"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
 
     <Button
-        android:id="@+id/emotion_5"
+        android:id="@+id/emotion_irritated"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
         android:background="@color/anger5"
-        android:text="@string/emotion"
+        android:text="@string/irritated"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotion_2"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_aggrevated"
         app:layout_constraintVertical_bias="0.008" />
 
     <Button
-        android:id="@+id/emotion_6"
+        android:id="@+id/emotion_annoyed"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
         android:background="@color/anger6"
-        android:text="@string/emotion"
+        android:text="@string/annoyed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/emotion_5"
-        app:layout_constraintTop_toBottomOf="@+id/emotion_4"
+        app:layout_constraintStart_toEndOf="@+id/emotion_irritated"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_frustrated"
         app:layout_constraintVertical_bias="0.013" />
 
     <Button
-        android:id="@+id/emotion_2"
+        android:id="@+id/emotion_aggrevated"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginTop="24dp"
         android:background="@color/anger3"
-        android:text="@string/emotion"
+        android:text="@string/aggrevated"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotion_1" />
+        app:layout_constraintTop_toBottomOf="@+id/emotion_enraged" />
 
     <Button
-        android:id="@+id/emotion_3"
+        android:id="@+id/emotion_irate"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/holo_red_light"
-        android:text="@string/emotion"
+        android:text="@string/irate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/emotion_1"
+        app:layout_constraintStart_toEndOf="@+id/emotion_enraged"
         app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
 
     <Button
-        android:id="@+id/emotion_4"
+        android:id="@+id/emotion_frustrated"
         android:layout_width="197dp"
         android:layout_height="153dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:background="@color/anger4"
-        android:text="@string/emotion"
+        android:text="@string/frustrated"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/emotion_2"
-        app:layout_constraintTop_toBottomOf="@+id/emotion_3" />
+        app:layout_constraintStart_toEndOf="@+id/emotion_aggrevated"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_irate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

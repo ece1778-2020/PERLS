@@ -10,8 +10,7 @@
         android:id="@+id/reflection"
         android:layout_width="421dp"
         android:layout_height="198dp"
-        android:layout_marginTop="236dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:fontFamily="sans-serif-black"
         android:text="@string/review"
@@ -21,14 +20,13 @@
         app:layout_constraintBottom_toTopOf="@+id/exercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/exercise"
         android:layout_width="422dp"
         android:layout_height="188dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="64dp"
         android:background="@android:color/holo_blue_light"
         android:fontFamily="sans-serif-black"
         android:text="@string/exercise"
@@ -44,14 +42,18 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="24dp"
         android:contentDescription="logo"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/reflection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.509"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
