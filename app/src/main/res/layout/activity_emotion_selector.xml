@@ -6,4 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".EmotionSelector">
 
+    <TextView
+        android:id="@+id/selection_prompt"
+        android:layout_width="377dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/selection_prompt"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/emotion_1"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/emotion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
+
+    <Button
+        android:id="@+id/emotion_5"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/anger5"
+        android:text="@string/emotion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_2"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <Button
+        android:id="@+id/emotion_6"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/anger6"
+        android:text="@string/emotion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_5"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_4"
+        app:layout_constraintVertical_bias="0.013" />
+
+    <Button
+        android:id="@+id/emotion_2"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/anger3"
+        android:text="@string/emotion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_1" />
+
+    <Button
+        android:id="@+id/emotion_3"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/emotion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_1"
+        app:layout_constraintTop_toBottomOf="@+id/selection_prompt" />
+
+    <Button
+        android:id="@+id/emotion_4"
+        android:layout_width="197dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/anger4"
+        android:text="@string/emotion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/emotion_2"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

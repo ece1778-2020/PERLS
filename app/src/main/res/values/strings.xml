@@ -2,5 +2,6 @@
     <string name="app_name">PERLS</string>
     <string name="exercise">EXERCISE</string>
     <string name="review">REVIEW REFLECTION</string>
-
+    <string name="selection_prompt">Which of the following best describes how you are feeling?</string>
+    <string name="emotion">Emotion</string>
 </resources>
