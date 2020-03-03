@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="holo_blue_bright">#003C85</color>
     <color name="anger3">#F45236</color>
     <color name="anger4">#F48236</color>
     <color name="anger5">#F49F36</color>

@@ -2,6 +2,17 @@
     <string name="app_name">PERLS</string>
     <string name="exercise">EXERCISE</string>
     <string name="review">REVIEW REFLECTION</string>
+    <string name="start_exercise">Start Exercise</string>
+    <string name="feeling_angry">Alright, so you are feeling Angry</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
+    <string name="congrats">Congratulations, you finished the exercise!!!! Please review the exercise you just did</string>
+    <string name="review_reflection">Review/Reflection</string>
+    <string name="timer">2:00</string>
+    <string name="go_to_reflection">Go to Reflection</string>
+    <string name="done">Done</string>
     <string name="selection_prompt">Which of the following best describes how you are feeling?</string>
     <string name="emotion">Emotion</string>
     <string name="annoyed">Annoyed</string>
