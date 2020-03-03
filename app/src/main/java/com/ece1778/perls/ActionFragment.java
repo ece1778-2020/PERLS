@@ -75,7 +75,7 @@ public class ActionFragment extends Fragment {
         mStartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CountDownTimer(120000, 1000) {
+                new CountDownTimer(30000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         long seconds = millisUntilFinished / 1000;
