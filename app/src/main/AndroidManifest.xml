@@ -9,18 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ReflectionActivity"></activity>
-        <activity android:name=".ExerciseActivity"></activity>
-
+        <activity android:name=".ReflectionReview"></activity>
+        <activity android:name=".ReflectionActivity" />
+        <activity android:name=".ExerciseActivity" />
         <activity
             android:name=".EmotionSelector"
-            android:launchMode="singleInstance"
-            ></activity>
+            android:launchMode="singleInstance" />
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleInstance"
-            >
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

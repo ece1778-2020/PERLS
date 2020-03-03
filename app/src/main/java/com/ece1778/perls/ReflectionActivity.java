@@ -49,10 +49,15 @@ public class ReflectionActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
+        String reflectionText = mReflectionText.getText().toString();
+        if(reflectionText.length() < 1){
+            startActivity(new Intent(this, MainActivity.class));
+            return;
+        }
         Map<String, Object> reflection = new HashMap<>();
         reflection.put("uid", uid);
         reflection.put("prompt", mTextView.getText().toString());
-        reflection.put("response", mReflectionText.getText().toString());
+        reflection.put("response", reflectionText);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection(REFLECTION_COLLECTION).document(uid)
