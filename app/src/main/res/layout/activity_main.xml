@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/reflection"
-        android:layout_width="421dp"
-        android:layout_height="198dp"
+        android:layout_width="492dp"
+        android:layout_height="202dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:fontFamily="sans-serif-black"
@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/exercise"
-        android:layout_width="422dp"
+        android:layout_width="0dp"
         android:layout_height="188dp"
         android:layout_marginBottom="64dp"
         android:background="@android:color/holo_blue_light"
