@@ -12,6 +12,7 @@
 
         <activity android:name=".ReflectionActivity"></activity>
         <activity android:name=".ExerciseActivity"></activity>
+
         <activity
             android:name=".EmotionSelector"
             android:launchMode="singleInstance"
