@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "724427807454",
+    "firebase_url": "https://perls-8f76f.firebaseio.com",
+    "project_id": "perls-8f76f",
+    "storage_bucket": "perls-8f76f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724427807454:android:af450649869e45e106004f",
+        "android_client_info": {
+          "package_name": "com.ece1778.perls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724427807454-k8lh5ro608oalgk6bp7ps8c06r3iaktj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZfPDrTHwtux3p2PuJMG0TXzWkfXSUa5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724427807454-k8lh5ro608oalgk6bp7ps8c06r3iaktj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
