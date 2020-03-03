@@ -44,7 +44,10 @@ class ReflectionAdapter extends RecyclerView.Adapter<ReflectionAdapter.Reflectio
 
     @Override
     public int getItemCount() {
-        return reflections.size();
+        if(reflections != null){
+            return reflections.size();
+        }
+        return 0;
     }
 
     public static class ReflectionViewHolder extends  RecyclerView.ViewHolder{
