@@ -39,35 +39,35 @@ public class EmotionSelector extends AppCompatActivity {
         mIrritated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("irritated" , ts, uid);
             }
         });
 
         mFrustrated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("frustrated" , ts, uid);
             }
         });
 
         mAggrevated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("aggravated" , ts, uid);
             }
         });
 
         mIrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("irate" , ts, uid);
             }
         });
 
         mEnraged.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("enraged" , ts, uid);
             }
         });
 
