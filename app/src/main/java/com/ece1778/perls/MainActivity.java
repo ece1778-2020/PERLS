@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 UUID uid = UUID.randomUUID();
                 String exerciseId = uid.toString();
                 Long ts = System.currentTimeMillis();
-                Toast.makeText(MainActivity.this, "exercise id generated", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "exercise id generated", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, EmotionSelector.class);
                 intent.putExtra(EXERCISE_MESSAGE_ID, exerciseId);
                 intent.putExtra(TIMESTAMP_ID, ts.toString());
