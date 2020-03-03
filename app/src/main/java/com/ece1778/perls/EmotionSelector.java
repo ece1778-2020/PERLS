@@ -77,7 +77,7 @@ public class EmotionSelector extends AppCompatActivity {
         /*
         * Change the mainActivity to the exercise activity when that's implemented
         * */
-        Intent  intent = new Intent(EmotionSelector.this, MainActivity.class);
+        Intent  intent = new Intent(EmotionSelector.this, ExerciseActivity.class);
         intent.putExtra(EXERCISE_MESSAGE_ID, uid);
         intent.putExtra(TIMESTAMP_ID, ts);
         intent.putExtra(EMOTION_ID, type);
