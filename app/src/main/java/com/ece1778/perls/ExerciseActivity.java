@@ -17,8 +17,11 @@ public class ExerciseActivity extends AppCompatActivity {
     private ExerciseViewModel mViewModel;
     private ViewPagerAdapter mAdapter;
     private ViewPager mViewPager;
-    private ImageView mNext;
-    private ImageView mPrevious;
+    private ImageView mNext, mPrevious;
+    private String timestamp, uid, emotion;
+    private static final String EXERCISE_MESSAGE_ID = "exerciseId";
+    private static final String TIMESTAMP_ID = "timestamp";
+    private static final String EMOTION_ID = "emotion";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,13 @@ public class ExerciseActivity extends AppCompatActivity {
         mNext = findViewById(R.id.next);
         mPrevious = findViewById(R.id.previous);
         //mPrevious.setVisibility(View.GONE);
+
+        //uncomment this when activity is connected to EmotionSelector
+        /*Intent intent = getIntent();
+        mViewModel.setEmotion(intent.getStringExtra(EMOTION_ID));
+        mViewModel.setUid(intent.getStringExtra(EXERCISE_MESSAGE_ID));
+        mViewModel.setTimestamp(intent.getStringExtra(TIMESTAMP_ID));*/
+
 
 
     }

@@ -1,6 +1,7 @@
 package com.ece1778.perls;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,12 +22,12 @@ public class ActionFragment extends Fragment {
 
     private ExerciseViewModel mViewModel;
     private TextView mTimer;
-    private TextView mAction;
-    private TextView mCongrats;
-    private Button mStartTimer;
-    private Button mReview;
-    private Button mCancel;
+    private TextView mAction, mCongrats, mReflection;
+    private Button mStartTimer, mReview, mCancel;
     private View mView;
+    private static final String EXERCISE_MESSAGE_ID = "exerciseId";
+    private static final String TIMESTAMP_ID = "timestamp";
+    private static final String EMOTION_ID = "emotion";
 
     public ActionFragment() {
         // Required empty public constructor
@@ -58,6 +59,7 @@ public class ActionFragment extends Fragment {
         mTimer = mView.findViewById(R.id.timer_textView);
         mCongrats = mView.findViewById(R.id.congs_textView);
         mStartTimer = mView.findViewById(R.id.start_button);
+        mReflection = mView.findViewById(R.id.reflection_textView);
         mStartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +75,18 @@ public class ActionFragment extends Fragment {
                         mCongrats.setVisibility(View.VISIBLE);
                     }
                 }.start();
+            }
+        });
+
+        mReflection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireActivity(), ReflectionActivity.class);
+                //uncomment this when exercise activity is connected to emotion selector
+                /*intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
+                intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
+                intent.putExtra(TIMESTAMP_ID, mViewModel.getTimestamp());*/
+                startActivity(intent);
             }
         });
 

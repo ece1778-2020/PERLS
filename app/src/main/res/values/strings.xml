@@ -11,5 +11,7 @@
     <string name="congrats">Congratulations, you finished the exercise!!!! Please review the exercise you just did</string>
     <string name="review_reflection">Review/Reflection</string>
     <string name="timer">2:00</string>
+    <string name="go_to_reflection">Go to Reflection</string>
+    <string name="done">Done</string>
 
 </resources>

@@ -7,13 +7,35 @@ import java.util.ArrayList;
 
 public class ExerciseViewModel extends ViewModel {
 
-    private MutableLiveData<Question> q1;
-    private MutableLiveData<Question> q2;
-    private MutableLiveData<Question> q3;
-    private MutableLiveData<Question> q4;
-    private MutableLiveData<Question> q5;
+    private MutableLiveData<Question> q1, q2, q3, q4, q5, actions;
     private MutableLiveData<String> action;
-    private MutableLiveData<Question> actions;
+    private String timestamp, uid, emotion;
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getEmotion() {
+        return emotion;
+    }
+
+    public void setEmotion(String emotion) {
+        this.emotion = emotion;
+    }
+
+
 
 
     public MutableLiveData<Question> getQ1() {
