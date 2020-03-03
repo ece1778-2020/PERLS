@@ -110,13 +110,14 @@ public class ActionFragment extends Fragment {
 
     public void uploadExercise(){
         Question q1, q2, q3, q4, q5;
+        String action;
 
         q1 = mViewModel.getQ1().getValue();
         q2 = mViewModel.getQ2().getValue();
         q3 = mViewModel.getQ3().getValue();
         q4 = mViewModel.getQ4().getValue();
         q5 = mViewModel.getQ5().getValue();
-
+        action = mViewModel.getAction().getValue();
         Map<String, Object> exercise = new HashMap<>();
         exercise.put("uid", mViewModel.getUid());
         exercise.put("timestamp", mViewModel.getTimestamp());
@@ -126,6 +127,7 @@ public class ActionFragment extends Fragment {
         exercise.put("q3", q3.getAnswer());
         exercise.put("q4", q4.getAnswer());
         exercise.put("q5", q5.getAnswer());
+        exercise.put("action", action);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
