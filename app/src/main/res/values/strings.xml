@@ -22,4 +22,13 @@
     <string name="irate">Irate</string>
     <string name="enraged">Enraged</string>
 
+    <string name="q1">What were you reacting to?</string>
+    <string name="q2">What were you thinking at the time?</string>
+    <string name="q3">What were you feeling at the time?</string>
+    <string name="q4">Did you feel your emotion was a valid reaction to the situation?</string>
+    <string name="q5">What was your urge to act on this emotion?</string>
+    <string name="action">What was the opposite action to what you felt?</string>
+    <string name="reflection">How did you feel after the exercise?</string>
+
+
 </resources>
