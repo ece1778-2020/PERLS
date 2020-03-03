@@ -49,6 +49,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     public void cancelExercise(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intent);
 
     }

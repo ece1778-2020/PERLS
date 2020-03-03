@@ -51,6 +51,7 @@ public class ReflectionActivity extends AppCompatActivity {
     public void goHome(View view) {
         String reflectionText = mReflectionText.getText().toString();
         if(reflectionText.length() < 1){
+            finish();
             startActivity(new Intent(this, MainActivity.class));
             return;
         }
@@ -66,6 +67,7 @@ public class ReflectionActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot reflection successfully written!");
+                        finish();
                         startActivity(new Intent(ReflectionActivity.this, MainActivity.class));
                     }
                 })
