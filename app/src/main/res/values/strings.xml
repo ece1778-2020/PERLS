@@ -13,5 +13,13 @@
     <string name="timer">2:00</string>
     <string name="go_to_reflection">Go to Reflection</string>
     <string name="done">Done</string>
+    <string name="selection_prompt">Which of the following best describes how you are feeling?</string>
+    <string name="emotion">Emotion</string>
+    <string name="annoyed">Annoyed</string>
+    <string name="irritated">Irritated</string>
+    <string name="frustrated">Frustrated</string>
+    <string name="aggrevated">Aggrevated</string>
+    <string name="irate">Irate</string>
+    <string name="enraged">Enraged</string>
 
 </resources>

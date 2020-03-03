@@ -7,38 +7,53 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/reflection"
         android:layout_width="421dp"
         android:layout_height="198dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:fontFamily="sans-serif-black"
         android:text="@string/review"
         android:textColor="@android:color/widget_edittext_dark"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:barrierDirection="bottom"
+        app:layout_constraintBottom_toTopOf="@+id/exercise"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/exercise"
-        android:layout_width="411dp"
-        android:layout_height="191dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="422dp"
+        android:layout_height="188dp"
+        android:layout_marginBottom="64dp"
         android:background="@android:color/holo_blue_light"
         android:fontFamily="sans-serif-black"
         android:text="@string/exercise"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#444442"
         android:textSize="36sp"
+        app:barrierDirection="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/reflection"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/reflection"
+        app:layout_constraintTop_toBottomOf="@+id/reflection" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="209dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="logo"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/reflection"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.509"
+        app:srcCompat="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
