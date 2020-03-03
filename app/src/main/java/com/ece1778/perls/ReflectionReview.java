@@ -124,8 +124,8 @@ public class ReflectionReview extends AppCompatActivity {
         while(it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
 
-            HashMap<String, String> exercise = (HashMap<String, String>)exercises.get(pair.getKey());
             HashMap<String, String> response = (HashMap<String, String>)pair.getValue();
+            HashMap<String, String> exercise = exercises.get(response.get("uid"));
             Reflection ref = new Reflection(
                     exercise.get("emotion"),
                     exercise.get("q1"),
