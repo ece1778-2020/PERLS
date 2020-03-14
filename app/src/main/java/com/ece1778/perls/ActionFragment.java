@@ -12,11 +12,22 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ActionFragment extends Fragment {
 
@@ -28,6 +39,7 @@ public class ActionFragment extends Fragment {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String EMOTION_ID = "emotion";
+    private static final String EXERCISE_COLLECTION = "exercises";
 
     public ActionFragment() {
         // Required empty public constructor
@@ -63,7 +75,7 @@ public class ActionFragment extends Fragment {
         mStartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CountDownTimer(120000, 1000) {
+                new CountDownTimer(30000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         long seconds = millisUntilFinished / 1000;
@@ -81,12 +93,7 @@ public class ActionFragment extends Fragment {
         mReflection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), ReflectionActivity.class);
-                //uncomment this when exercise activity is connected to emotion selector
-                /*intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
-                intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
-                intent.putExtra(TIMESTAMP_ID, mViewModel.getTimestamp());*/
-                startActivity(intent);
+                uploadExercise();
             }
         });
 
@@ -101,5 +108,50 @@ public class ActionFragment extends Fragment {
 
     }
 
+    public void uploadExercise(){
+        Question q1, q2, q3, q4, q5;
+        String action;
+
+        q1 = mViewModel.getQ1().getValue();
+        q2 = mViewModel.getQ2().getValue();
+        q3 = mViewModel.getQ3().getValue();
+        q4 = mViewModel.getQ4().getValue();
+        q5 = mViewModel.getQ5().getValue();
+        action = mViewModel.getAction().getValue();
+        Map<String, Object> exercise = new HashMap<>();
+        exercise.put("uid", mViewModel.getUid());
+        exercise.put("timestamp", mViewModel.getTimestamp());
+        exercise.put("emotion", mViewModel.getEmotion());
+        exercise.put("q1", q1.getAnswer());
+        exercise.put("q2", q2.getAnswer());
+        exercise.put("q3", q3.getAnswer());
+        exercise.put("q4", q4.getAnswer());
+        exercise.put("q5", q5.getAnswer());
+        exercise.put("action", action);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection(EXERCISE_COLLECTION).document(mViewModel.getUid())
+                .set(exercise)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent intent = new Intent(requireActivity(), ReflectionActivity.class);
+                        intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
+                        intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
+                        intent.putExtra(TIMESTAMP_ID, mViewModel.getTimestamp());
+                        //requireActivity().finish();
+                        startActivity(intent);
+                        Log.d(TAG, "DocumentSnapshot exercise successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing exercise document, try again", e);
+                        Toast.makeText(getContext(), "Failed upload, try again", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
 }

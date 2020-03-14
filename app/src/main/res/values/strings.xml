@@ -10,7 +10,7 @@
     <string name="start">Start</string>
     <string name="congrats">Congratulations, you finished the exercise!!!! Please review the exercise you just did</string>
     <string name="review_reflection">Review/Reflection</string>
-    <string name="timer">2:00</string>
+    <string name="timer">0:30</string>
     <string name="go_to_reflection">Go to Reflection</string>
     <string name="done">Done</string>
     <string name="selection_prompt">Which of the following best describes how you are feeling?</string>
@@ -18,8 +18,17 @@
     <string name="annoyed">Annoyed</string>
     <string name="irritated">Irritated</string>
     <string name="frustrated">Frustrated</string>
-    <string name="aggrevated">Aggrevated</string>
+    <string name="aggrevated">Aggravated</string>
     <string name="irate">Irate</string>
     <string name="enraged">Enraged</string>
+
+    <string name="q1">What were you reacting to?</string>
+    <string name="q2">What were you thinking at the time?</string>
+    <string name="q3">What were you feeling at the time?</string>
+    <string name="q4">Did you feel your emotion was a valid reaction to the situation?</string>
+    <string name="q5">What was your urge to act on this emotion?</string>
+    <string name="action">What was the opposite action to what you felt?</string>
+    <string name="reflection">How did you feel after the exercise?</string>
+
 
 </resources>

@@ -38,10 +38,10 @@ public class ExerciseActivity extends AppCompatActivity {
         //mPrevious.setVisibility(View.GONE);
 
         //uncomment this when activity is connected to EmotionSelector
-        /*Intent intent = getIntent();
+        Intent intent = getIntent();
         mViewModel.setEmotion(intent.getStringExtra(EMOTION_ID));
         mViewModel.setUid(intent.getStringExtra(EXERCISE_MESSAGE_ID));
-        mViewModel.setTimestamp(intent.getStringExtra(TIMESTAMP_ID));*/
+        mViewModel.setTimestamp(intent.getStringExtra(TIMESTAMP_ID));
 
 
 
@@ -49,6 +49,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     public void cancelExercise(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intent);
 
     }
