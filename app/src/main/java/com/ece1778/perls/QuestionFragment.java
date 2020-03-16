@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class QuestionFragment extends Fragment {
@@ -28,6 +33,10 @@ public class QuestionFragment extends Fragment {
     private RadioGroup mRadioGroup;
     private TextView mTextView;
     private View mView;
+    private RecyclerView mRecyclerView;
+    private OptionListAdapter mAdapter;
+    private ArrayList<String> mOptionList;
+
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -51,6 +60,8 @@ public class QuestionFragment extends Fragment {
         }
 
         mViewModel = new ViewModelProvider(requireActivity()).get(ExerciseViewModel.class);
+        mViewModel.setPosition(mPosition);
+
     }
 
     @Override
@@ -58,9 +69,14 @@ public class QuestionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_question, container, false);
-        mRadioGroup = mView.findViewById(R.id.options);
-        mRadioGroup.removeAllViewsInLayout();
+        //mRadioGroup = mView.findViewById(R.id.options);
+        //mRadioGroup.removeAllViewsInLayout();
         mTextView = mView.findViewById(R.id.question);
+        mOptionList = new ArrayList<>();
+        mRecyclerView = mView.findViewById(R.id.optionRecyclerView);
+        mAdapter = new OptionListAdapter(requireActivity(), mOptionList, mViewModel);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         loadQuestion();
 
         return mView;
@@ -69,7 +85,7 @@ public class QuestionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 String answer = ((RadioButton) mView.findViewById(checkedId)).getText().toString();
@@ -117,7 +133,7 @@ public class QuestionFragment extends Fragment {
                 }
 
             }
-        });
+        });*/
     }
 
 
@@ -128,10 +144,13 @@ public class QuestionFragment extends Fragment {
                 Question q1 = mViewModel.getQ1().getValue();
                 mTextView.setText(q1.getQuestion());
                 for (String option : q1.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
 
@@ -139,10 +158,13 @@ public class QuestionFragment extends Fragment {
                 Question q2 = mViewModel.getQ2().getValue();
                 mTextView.setText(q2.getQuestion());
                 for (String option : q2.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
 
@@ -150,10 +172,13 @@ public class QuestionFragment extends Fragment {
                 Question q3 = mViewModel.getQ3().getValue();
                 mTextView.setText(q3.getQuestion());
                 for (String option : q3.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
 
@@ -161,10 +186,13 @@ public class QuestionFragment extends Fragment {
                 Question q4 = mViewModel.getQ4().getValue();
                 mTextView.setText(q4.getQuestion());
                 for (String option : q4.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
 
@@ -172,10 +200,13 @@ public class QuestionFragment extends Fragment {
                 Question q5 = mViewModel.getQ5().getValue();
                 mTextView.setText(q5.getQuestion());
                 for (String option : q5.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
 
@@ -183,10 +214,13 @@ public class QuestionFragment extends Fragment {
                 Question actions = mViewModel.getActions().getValue();
                 mTextView.setText(actions.getQuestion());
                 for (String option : actions.getOptions()) {
-                    RadioButton btn = new RadioButton(mView.getContext());
+                    /*RadioButton btn = new RadioButton(mView.getContext());
                     btn.setText(option);
                     btn.setId(View.generateViewId());
-                    mRadioGroup.addView(btn);
+                    mRadioGroup.addView(btn);*/
+                    mOptionList.add(option);
+                    mAdapter.notifyItemInserted(mOptionList.size() - 1);
+                    mRecyclerView.scrollToPosition(mOptionList.size() - 1);
                 }
                 break;
             default:

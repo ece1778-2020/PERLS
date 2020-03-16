@@ -8,4 +8,8 @@
     <color name="anger4">#F48236</color>
     <color name="anger5">#F49F36</color>
     <color name="anger6">#F4E136</color>
+    <color name="dark_purple">#626199</color>
+    <color name="medium_purple">#9796bc</color>
+    <color name="light_purple">#b9b8d2</color>
+    <color name="lighter_purple">#e6e1f9</color>
 </resources>

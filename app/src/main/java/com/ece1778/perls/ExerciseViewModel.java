@@ -10,6 +10,16 @@ public class ExerciseViewModel extends ViewModel {
     private MutableLiveData<Question> q1, q2, q3, q4, q5, actions;
     private MutableLiveData<String> action;
     private String timestamp, uid, emotion;
+    private int position;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
 
     public String getTimestamp() {
         return timestamp;
