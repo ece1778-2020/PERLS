@@ -140,10 +140,8 @@ public class ActionFragment extends Fragment {
                         intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
                         intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
                         intent.putExtra(TIMESTAMP_ID, mViewModel.getTimestamp());
-<<<<<<< HEAD
                         //requireActivity().finish();
-=======
->>>>>>> f28b80bb85b050e5875236100967af717c7cc8a5
+
                         startActivity(intent);
                         Log.d(TAG, "DocumentSnapshot exercise successfully written!");
                     }
