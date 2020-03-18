@@ -40,6 +40,8 @@ public class ActionFragment extends Fragment {
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String EMOTION_ID = "emotion";
     private static final String EXERCISE_COLLECTION = "exercises";
+    private static final String SESSION_ID="sessionId";
+    private static final String SESSION_COLLECTION="sessions";
 
     public ActionFragment() {
         // Required empty public constructor
@@ -54,6 +56,7 @@ public class ActionFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mViewModel = new ViewModelProvider(requireActivity()).get(ExerciseViewModel.class);
+        //Log.d("checking session id: ", mViewModel.getUid());
     }
 
     @Override
@@ -93,6 +96,7 @@ public class ActionFragment extends Fragment {
         mReflection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("View model uid: ", mViewModel.getUid());
                 uploadExercise();
             }
         });
@@ -109,6 +113,7 @@ public class ActionFragment extends Fragment {
     }
 
     public void uploadExercise(){
+        //Log.d("View model uid: ", mViewModel.getUid());
         Question q1, q2, q3, q4, q5;
         String action;
 
@@ -121,6 +126,7 @@ public class ActionFragment extends Fragment {
         Map<String, Object> exercise = new HashMap<>();
         exercise.put("uid", mViewModel.getUid());
         exercise.put("timestamp", mViewModel.getTimestamp());
+        exercise.put("name", mViewModel.getExercise_name());
         exercise.put("emotion", mViewModel.getEmotion());
         exercise.put("q1", q1.getAnswer());
         exercise.put("q2", q2.getAnswer());
@@ -137,9 +143,11 @@ public class ActionFragment extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Intent intent = new Intent(requireActivity(), ReflectionActivity.class);
+                        requireActivity().finish();
                         intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
                         intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
-                        intent.putExtra(TIMESTAMP_ID, mViewModel.getTimestamp());
+                        intent.putExtra(TIMESTAMP_ID, mViewModel.getSession_ts());
+                        intent.putExtra(SESSION_ID, mViewModel.getSession_uid());
                         //requireActivity().finish();
 
                         startActivity(intent);
