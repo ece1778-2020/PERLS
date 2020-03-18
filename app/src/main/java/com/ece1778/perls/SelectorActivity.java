@@ -39,9 +39,10 @@ public class SelectorActivity extends AppCompatActivity {
         intent.putExtra(SESSION_ID, session_id);
         intent.putExtra(TIMESTAMP_ID, session_ts);
         intent.putExtra(EMOTION_ID, emotion_id);
-        intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid);
+        intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
         intent.putExtra(EXERCISE, "opposite action");
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
+        //Log.d("checking session id: ", exer_uid);
         finish();
         startActivity(intent);
     }
@@ -53,7 +54,7 @@ public class SelectorActivity extends AppCompatActivity {
         intent.putExtra(SESSION_ID, session_id);
         intent.putExtra(TIMESTAMP_ID, session_ts);
         intent.putExtra(EMOTION_ID, emotion_id);
-        intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid);
+        intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
         intent.putExtra(EXERCISE, "problem solving");
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
         finish();

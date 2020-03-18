@@ -50,6 +50,7 @@ public class LessonActivity extends AppCompatActivity {
         exercise_uid = intent.getStringExtra(EXERCISE_MESSAGE_ID);
         exercise_ts = intent.getStringExtra(EXERSISE_TIMESTAMP);
         exercise = intent.getStringExtra(EXERCISE);
+        //Log.d("checking session id: ", exercise_uid);
 
 
         //add all the data and notify dataset chane or something

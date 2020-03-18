@@ -32,8 +32,10 @@ public class ReflectionActivity extends AppCompatActivity {
     private static final String EXERSISE_TIMESTAMP= "exersiseTimestamp";
     private static final String EXERCISE = "exercise_name";
     private static final String REFLECTION_COLLECTION = "reflections";
+    private static final String SESSION_COLLECTION = "sessions";
 
     private String session_ts, session_id, uid, exercise_ts, emotion, reflection, reflectionText;
+    private String[] exercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,33 +56,12 @@ public class ReflectionActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
-        reflectionText = mReflectionText.getText().toString();
+        String reflectionText = mReflectionText.getText().toString();
         if(reflectionText.length() < 1){
             finish();
             startActivity(new Intent(this, MainActivity.class));
             return;
         }
-
-        saveData();
-
-    }
-
-    public void take_more(View view) {
-        reflectionText = mReflectionText.getText().toString();
-        if(reflectionText.length() < 1){
-            finish();
-            Intent intent = new Intent();
-            intent.putExtra(SESSION_ID, session_id);
-            intent.putExtra(TIMESTAMP_ID, session_ts);
-            intent.putExtra(EMOTION_ID, emotion);
-            startActivity(new Intent(this, SelectorActivity.class));
-            return;
-        }
-        saveData();
-
-    }
-
-    public void saveData(){
         Map<String, Object> reflection = new HashMap<>();
         reflection.put("uid", uid);
         reflection.put("prompt", mTextView.getText().toString());
@@ -104,5 +85,54 @@ public class ReflectionActivity extends AppCompatActivity {
                         Toast.makeText(ReflectionActivity.this, "Failed upload, try again", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public void take_more(View view) {
+        String reflectionText = mReflectionText.getText().toString();
+        if(reflectionText.length() < 1){
+            finish();
+            startActivity(new Intent(ReflectionActivity.this, MainActivity.class));
+            return;
+        }
+
+        Map<String, Object> reflection = new HashMap<>();
+        reflection.put("uid", uid);
+        reflection.put("prompt", mTextView.getText().toString());
+        reflection.put("response", reflectionText);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection(REFLECTION_COLLECTION).document(uid)
+                .set(reflection)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot reflection successfully written!");
+                        Intent intent = new Intent(ReflectionActivity.this, SelectorActivity.class);
+                        intent.putExtra(SESSION_ID, session_id);
+                        intent.putExtra(TIMESTAMP_ID, session_ts);
+                        intent.putExtra(EMOTION_ID, emotion);
+                        finish();
+                        startActivity(intent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing exercise document, try again", e);
+                        Toast.makeText(ReflectionActivity.this, "Failed upload, try again", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+    }
+
+    public void saveSession(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> session = new HashMap<>();
+        session.put("uid", session_id);
+        session.put("exercises", exercises);
+
+        //db.collection(SESSION_COLLECTION).document(session_id).set()
+
     }
 }

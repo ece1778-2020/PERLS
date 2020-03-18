@@ -25,6 +25,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private static final String SESSION_ID="sessionId";
     private static final String EXERSISE_TIMESTAMP= "exersiseTimestamp";
     private static final String EXERCISE = "exercise_name";
+    private String session_ts, session_id, exercise_uid, exercise_ts, emotion_id, exercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,21 @@ public class ExerciseActivity extends AppCompatActivity {
 
         //uncomment this when activity is connected to EmotionSelector
         Intent intent = getIntent();
-        mViewModel.setEmotion(intent.getStringExtra(EMOTION_ID));
-        mViewModel.setUid(intent.getStringExtra(EXERCISE_MESSAGE_ID));
-        mViewModel.setSession_ts(intent.getStringExtra(TIMESTAMP_ID));
-        mViewModel.setExercise_name(EXERCISE);
-        mViewModel.setTimestamp(intent.getStringExtra(EXERSISE_TIMESTAMP));
-        mViewModel.setSession_uid(intent.getStringExtra(SESSION_ID));
+        //Log.d("checking session id: ", intent.getStringExtra(EXERCISE));
+        session_id = intent.getStringExtra(SESSION_ID);
+        session_ts = intent.getStringExtra(TIMESTAMP_ID);
+        emotion_id = intent.getStringExtra(EMOTION_ID);
+        exercise_ts = intent.getStringExtra(EXERSISE_TIMESTAMP);
+        exercise_uid  = intent.getStringExtra(EXERCISE_MESSAGE_ID);
+        exercise = intent.getStringExtra(EXERCISE);
+        mViewModel.setEmotion(emotion_id);
+        mViewModel.setUid(exercise_uid);
+        mViewModel.setSession_ts(session_ts);
+        mViewModel.setExercise_name(exercise);
+        mViewModel.setTimestamp(exercise_ts);
+        mViewModel.setSession_uid(session_id);
+
+        Log.d("checking session id: ", intent.getStringExtra(EXERCISE_MESSAGE_ID));
 
 
     }

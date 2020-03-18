@@ -13,6 +13,9 @@ public class ExerciseViewModel extends ViewModel {
     private String uid;
     private String emotion;
     private String session_ts;
+    private String session_uid;
+    private int position;
+    private String exercise_name;
 
     public String getExercise_name() {
         return exercise_name;
@@ -22,7 +25,7 @@ public class ExerciseViewModel extends ViewModel {
         this.exercise_name = exercise_name;
     }
 
-    private String exercise_name;
+
 
     public String getSession_ts() {
         return session_ts;
@@ -40,8 +43,7 @@ public class ExerciseViewModel extends ViewModel {
         this.session_uid = session_uid;
     }
 
-    private String session_uid;
-    private int position;
+
 
     public int getPosition() {
         return position;

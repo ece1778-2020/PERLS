@@ -56,6 +56,7 @@ public class ActionFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mViewModel = new ViewModelProvider(requireActivity()).get(ExerciseViewModel.class);
+        //Log.d("checking session id: ", mViewModel.getUid());
     }
 
     @Override
@@ -142,6 +143,7 @@ public class ActionFragment extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Intent intent = new Intent(requireActivity(), ReflectionActivity.class);
+                        requireActivity().finish();
                         intent.putExtra(EMOTION_ID, mViewModel.getEmotion());
                         intent.putExtra(EXERCISE_MESSAGE_ID, mViewModel.getUid());
                         intent.putExtra(TIMESTAMP_ID, mViewModel.getSession_ts());
