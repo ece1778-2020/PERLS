@@ -56,8 +56,7 @@ public class ExerciseActivity extends AppCompatActivity {
         mViewModel.setExercise_name(exercise);
         mViewModel.setTimestamp(exercise_ts);
         mViewModel.setSession_uid(session_id);
-
-        Log.d("checking session id: ", intent.getStringExtra(EXERCISE_MESSAGE_ID));
+        mViewModel.setContext(this);
 
 
     }

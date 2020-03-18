@@ -1,5 +1,9 @@
 package com.ece1778.perls;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -16,6 +20,17 @@ public class ExerciseViewModel extends ViewModel {
     private String session_uid;
     private int position;
     private String exercise_name;
+    private Context context;
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+
 
     public String getExercise_name() {
         return exercise_name;
@@ -160,23 +175,42 @@ public class ExerciseViewModel extends ViewModel {
                 break;
 
             case 5:
-                text = "What is your urge to act on this emotion?";
-                options = new ArrayList<String>();
-                options.add("Physically/verbally attacking");
-                options.add("Making aggressive/threatening gestures");
-                options.add("Pounding, throwing, breaking");
-                options.add("Walking heavily, stomping, slamming");
-                options.add("Walking out");
-                options.add("Using a loud, quarrelsome, sarcastic voice");
-                options.add("Clenching your hands and fists");
-                options.add("Frowning or showing a mean expression");
-                options.add("Brooding or withdrawing from others");
-                options.add("Crying");
-                q5.setValue(new Question(text, options, ""));
+                Log.d("exercise_name", exercise_name);
+                Log.d("exercise_name2", context.getString(R.string.opposite_action));
+
+                if (exercise_name.equals(context.getString(R.string.opposite_action))) {
+                    text = "What is your urge to act on this emotion?";
+                    options = new ArrayList<String>();
+                    options.add("Physically/verbally attacking");
+                    options.add("Making aggressive/threatening gestures");
+                    options.add("Pounding, throwing, breaking");
+                    options.add("Walking heavily, stomping, slamming");
+                    options.add("Walking out");
+                    options.add("Using a loud, quarrelsome, sarcastic voice");
+                    options.add("Clenching your hands and fists");
+                    options.add("Frowning or showing a mean expression");
+                    options.add("Brooding or withdrawing from others");
+                    options.add("Crying");
+                    q5.setValue(new Question(text, options, ""));
+                } else {
+                    text = "What has to happen for you to think you have made some progress?";
+                    options = new ArrayList<String>();
+                    options.add("Relaxed hands");
+                    options.add("Steady breath");
+                    options.add("Stop crying");
+                    options.add("Restrain yourself");
+                    q5.setValue(new Question(text, options, ""));
+                }
+
                 break;
 
             case 6:
-                text = "If you want to feel differently, choose one of the opposite action:";
+                if (exercise_name.equals(context.getString(R.string.opposite_action))) {
+                    text = "If you want to feel differently, choose one of the opposite action:";
+                } else {
+                    text= "Here are some solutions, choose one to continue:";
+                }
+
                 options = new ArrayList<String>();
                 options.add("step into the other person's shoes/see the situation from their point of view");
                 options.add("change your posture/relax chest and stomach muscles/unclench");
