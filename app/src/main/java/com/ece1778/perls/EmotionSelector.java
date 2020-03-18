@@ -2,8 +2,10 @@ package com.ece1778.perls;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,7 +13,8 @@ public class EmotionSelector extends AppCompatActivity {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String EMOTION_ID = "emotion";
-    String ts, uid;
+    private static final String SESSION_ID="sessionId";
+    String ts, uid, session_id;
     private Button  mAnnoyed,
                     mIrritated,
                     mFrustrated,
@@ -27,60 +30,64 @@ public class EmotionSelector extends AppCompatActivity {
 
         Intent intent = getIntent();
         ts = intent.getStringExtra(TIMESTAMP_ID);
-        uid = intent.getStringExtra(EXERCISE_MESSAGE_ID);
+        //uid = intent.getStringExtra(EXERCISE_MESSAGE_ID);
+        session_id = intent.getStringExtra(SESSION_ID);
+        //Log.d("checking session id: ", session_id);
 
         mAnnoyed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("annoyed" , ts, uid);
+                startExercise("annoyed" , ts, session_id);
             }
         });
 
         mIrritated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("irritated" , ts, uid);
+                startExercise("irritated" , ts, session_id);
             }
         });
 
         mFrustrated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("frustrated" , ts, uid);
+                startExercise("frustrated" , ts, session_id);
             }
         });
 
         mAggrevated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("aggravated" , ts, uid);
+                startExercise("aggravated" , ts, session_id);
             }
         });
 
         mIrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("irate" , ts, uid);
+                startExercise("irate" , ts, session_id);
             }
         });
 
         mEnraged.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startExercise("enraged" , ts, uid);
+                startExercise("enraged" , ts, session_id);
             }
         });
 
     }
 
-    public void startExercise(String type, String ts, String uid){
+    public void startExercise(String type, String ts, String session_id){
         /*
         * Change the mainActivity to the exercise activity when that's implemented
         * */
-        Intent  intent = new Intent(EmotionSelector.this, ExerciseActivity.class);
-        intent.putExtra(EXERCISE_MESSAGE_ID, uid);
+        //Intent  intent = new Intent(EmotionSelector.this, ExerciseActivity.class);
+        Intent  intent = new Intent(EmotionSelector.this, SelectorActivity.class);
+        //intent.putExtra(EXERCISE_MESSAGE_ID, uid);
         intent.putExtra(TIMESTAMP_ID, ts);
         intent.putExtra(EMOTION_ID, type);
+        intent.putExtra(SESSION_ID, session_id);
         startActivity(intent);
     }
 

@@ -22,6 +22,9 @@ public class ExerciseActivity extends AppCompatActivity {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String EMOTION_ID = "emotion";
+    private static final String SESSION_ID="sessionId";
+    private static final String EXERSISE_TIMESTAMP= "exersiseTimestamp";
+    private static final String EXERCISE = "exercise_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,10 @@ public class ExerciseActivity extends AppCompatActivity {
         Intent intent = getIntent();
         mViewModel.setEmotion(intent.getStringExtra(EMOTION_ID));
         mViewModel.setUid(intent.getStringExtra(EXERCISE_MESSAGE_ID));
-        mViewModel.setTimestamp(intent.getStringExtra(TIMESTAMP_ID));
-
+        mViewModel.setSession_ts(intent.getStringExtra(TIMESTAMP_ID));
+        mViewModel.setExercise_name(EXERCISE);
+        mViewModel.setTimestamp(intent.getStringExtra(EXERSISE_TIMESTAMP));
+        mViewModel.setSession_uid(intent.getStringExtra(SESSION_ID));
 
 
     }

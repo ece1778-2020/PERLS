@@ -9,7 +9,38 @@ public class ExerciseViewModel extends ViewModel {
 
     private MutableLiveData<Question> q1, q2, q3, q4, q5, actions;
     private MutableLiveData<String> action;
-    private String timestamp, uid, emotion;
+    private String timestamp;
+    private String uid;
+    private String emotion;
+    private String session_ts;
+
+    public String getExercise_name() {
+        return exercise_name;
+    }
+
+    public void setExercise_name(String exercise_name) {
+        this.exercise_name = exercise_name;
+    }
+
+    private String exercise_name;
+
+    public String getSession_ts() {
+        return session_ts;
+    }
+
+    public void setSession_ts(String session_ts) {
+        this.session_ts = session_ts;
+    }
+
+    public String getSession_uid() {
+        return session_uid;
+    }
+
+    public void setSession_uid(String session_uid) {
+        this.session_uid = session_uid;
+    }
+
+    private String session_uid;
     private int position;
 
     public int getPosition() {
