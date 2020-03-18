@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setUI();
-
-
+        startAccelerometer();
         mExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, ReflectionReview.class));
                     }
         });
+    }
+
+    private void startAccelerometer() {
+        Intent intent = new Intent(MainActivity.this, AgitationDetectorService.class);
+        startService(intent);
     }
 
     private void setUI(){

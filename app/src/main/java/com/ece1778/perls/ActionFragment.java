@@ -149,6 +149,7 @@ public class ActionFragment extends Fragment {
                         intent.putExtra(TIMESTAMP_ID, mViewModel.getSession_ts());
                         intent.putExtra(SESSION_ID, mViewModel.getSession_uid());
                         //requireActivity().finish();
+
                         startActivity(intent);
                         Log.d(TAG, "DocumentSnapshot exercise successfully written!");
                     }

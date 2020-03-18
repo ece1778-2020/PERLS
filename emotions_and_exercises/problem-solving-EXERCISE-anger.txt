@@ -1,0 +1,75 @@
+Problem Solving (Exercise) 
+==========================
+
+Okay, so you've selected an emotion in the *ANGER* category. 
+
+We'll use the problem solving technique to help you change your emotions.
+
+1. What is the problem? Does the situation fit one of the following? 
+
+- An important goal was blocked.
+- A desired activity got interrupted or prevented.
+- You or someone you care about was hurt/attacked by others.
+- You or someone you care about was insulted/threatened by others.
+- Your integrity or that of your social group was offended/threatened. 
+- Physical or emotional pain.
+- OTHER PROBLEM? (Text input)
+
+2. Check the facts to make sure you have the right problem. Did you think any of the following?
+
+- I've been treated unfairly. 
+- This shouldn't have happened/things should be different. 
+- That I'm right and others don't agree. 
+- What happened was wrong and/or unacceptable. 
+- I've been ruminating about the situation. 
+- OTHER THOUGHT? 
+
+3. Check the facts once more to make sure you have the right problem. Did you feel any of the following?
+
+- Muscles tightening
+- Teeth clamping
+- Hands clenching
+- Feeling flush/hot 
+- Being unable to stop tears
+- Wanting to attack or lash out
+- OTHER FEELING? 
+
+4. Based on this this information, do you feel your emotion is a valid reaction to the situation?
+
+- YES 
+- NO
+- MAYBE
+- UNSURE
+
+5. What is a realistic short-term goal to your problem? What has to happen for you to think you have made some progress?
+
+- SHORT TEXT INPUT (Sorry this one is more text based).
+
+
+6. Brainstorm solutions. List as many solutions as you can without censoring yourself. (try to come up with at least 6).
+
+- 6 separate text box line inputs (option 1, option 2, option 3, option 4).
+- add another?
+
+
+7. Based on your inputs, which two ideas are the worst or unlikely to help? Which two ideas are the best? 
+
+Some examples for anger might include: removing or overcome obstacles to goals; work to stop further attacks, insults, threats; avoid or walk out on threatening/unfair people. 
+
+- helpful solutions: text input 1
+- unhelpful solutions: text input 2
+
+
+8. Now choose one solution to try in order to change how you are feeling. What are the steps you might take to implement this solution?
+
+- one solution to try input 
+
+
+9. You'll need to monitor and evaluate this solution. If this first solution does NOT work, name a second solution to attempt below. 
+
+- text input 1. 
+
+
+Remember to actually change the way you are feeling, you're going to have to do something. So don't expect to feel better if you don't put any of your solutions into action. 
+
+
