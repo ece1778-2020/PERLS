@@ -9,7 +9,11 @@ import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.provider.Settings;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 public class AgitationDetectorService extends Service implements SensorEventListener {
 
@@ -17,19 +21,26 @@ public class AgitationDetectorService extends Service implements SensorEventList
     private float xPrevAccel, yPrevAccel, zPrevAccel;
     private float accelThreshold = 12.5f;
 
+    private NotificationHelper notificationHelper;
+
     boolean isFirstUpdate = true;
     boolean isShaking = false;
 
     Sensor accelerometer;
     SensorManager sensorManager;
 
+    private long lastNotificationTimestamp;
+    private long frequency = 5000; // maximum notify once a minute (changed to 5 seconds for demo)
+
     @Override
     public void onCreate() {
         super.onCreate();
 
+        notificationHelper = new NotificationHelper(getApplicationContext());
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        lastNotificationTimestamp = System.currentTimeMillis();
     }
 
     @Nullable
@@ -46,7 +57,9 @@ public class AgitationDetectorService extends Service implements SensorEventList
             isShaking = true;
         }
         else if (isShaking && isAccelerationChanged()) {
-            notifyForExercise();
+            if(System.currentTimeMillis() - lastNotificationTimestamp > frequency){
+             notifyForExercise();
+            }
         }
         else if (isShaking && !isAccelerationChanged()){
             isShaking = false;
@@ -54,9 +67,14 @@ public class AgitationDetectorService extends Service implements SensorEventList
     }
 
     private void notifyForExercise() {
-        Intent intent = new Intent(this, ReflectionReview.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+
+        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Do an exercise?", "You seem agitated, click to start PERLS!");
+        notificationHelper.getManager().notify(1, nb.build());
+        lastNotificationTimestamp = System.currentTimeMillis();
+
+//        Intent intent = new Intent(this, ReflectionReview.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
     }
 
     private boolean isAccelerationChanged() {
