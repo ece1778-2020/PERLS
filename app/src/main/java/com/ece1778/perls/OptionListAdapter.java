@@ -73,8 +73,8 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
         holder.optionCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Click listener working", Toast.LENGTH_SHORT).show();
                 String answer = holder.optionTextView.getText().toString();
+               // Toast.makeText(mContext, "Click listener working", Toast.LENGTH_SHORT).show();
 
                 switch (mViewModel.getPosition()) {
                     case 0:
