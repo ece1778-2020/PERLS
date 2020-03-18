@@ -89,11 +89,6 @@ public class ReflectionActivity extends AppCompatActivity {
 
     public void take_more(View view) {
         String reflectionText = mReflectionText.getText().toString();
-        if(reflectionText.length() < 1){
-            finish();
-            startActivity(new Intent(ReflectionActivity.this, MainActivity.class));
-            return;
-        }
 
         Map<String, Object> reflection = new HashMap<>();
         reflection.put("uid", uid);

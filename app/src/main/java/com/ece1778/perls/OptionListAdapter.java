@@ -24,7 +24,6 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
     private LayoutInflater mInflater;
     private Context mContext;
     private ExerciseViewModel mViewModel;
-    private int mPosition;
 
     public OptionListAdapter(Context context, ArrayList<String> optionList, ExerciseViewModel model){
         mInflater = LayoutInflater.from(context);
