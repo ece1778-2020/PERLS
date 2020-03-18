@@ -69,7 +69,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
     }
 
     private void notifyForExercise() {
-        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Do an exercise?", "You seem agitated, click to start PERLS!");
+        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Something wrong?", "Why not slow down with a PERLS activity?");
         notificationHelper.getManager().notify(1, nb.build());
         lastNotificationTimestamp = System.currentTimeMillis();
 
