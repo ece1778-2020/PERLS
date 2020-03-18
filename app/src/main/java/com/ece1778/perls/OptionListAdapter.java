@@ -73,6 +73,11 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
         holder.optionCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(mContext, "Click listener working", Toast.LENGTH_SHORT).show();
+                if (holder.optionCardView.getCardBackgroundColor().equals(mContext.getColor(R.color.dark_purple))){
+                    holder.optionCardView.setCardBackgroundColor(mContext.getColor(R.color.lighter_purple));
+                }
+                holder.optionCardView.setCardBackgroundColor(mContext.getColor(R.color.dark_purple));
                 String answer = holder.optionTextView.getText().toString();
                // Toast.makeText(mContext, "Click listener working", Toast.LENGTH_SHORT).show();
 
