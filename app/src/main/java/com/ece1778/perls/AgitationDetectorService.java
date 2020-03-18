@@ -30,8 +30,8 @@ public class AgitationDetectorService extends Service implements SensorEventList
     Sensor accelerometer;
     SensorManager sensorManager;
 
-    private long lastNotificationTimestamp;
-    private long frequency = 5000; // maximum notify once a minute (changed to 5 seconds for demo)
+    private long lastNotificationTimestamp = 0;
+    private long frequency = 120000; // maximum notify once a minute (changed to 5 seconds for demo)
 
     @Override
     public void onCreate() {
@@ -39,9 +39,8 @@ public class AgitationDetectorService extends Service implements SensorEventList
 
         notificationHelper = new NotificationHelper(getApplicationContext());
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        lastNotificationTimestamp = System.currentTimeMillis();
 
     }
 
@@ -59,8 +58,8 @@ public class AgitationDetectorService extends Service implements SensorEventList
             isShaking = true;
         }
         else if (isShaking && isAccelerationChanged()) {
-            if(System.currentTimeMillis() - lastNotificationTimestamp > frequency){
-             notifyForExercise();
+            if((System.currentTimeMillis() - lastNotificationTimestamp) > frequency){
+                notifyForExercise();
             }
 
         }
