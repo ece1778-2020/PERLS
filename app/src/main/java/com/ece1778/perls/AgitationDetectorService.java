@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.annotation.Nullable;
 
 public class AgitationDetectorService extends Service implements SensorEventListener {
 
@@ -41,6 +42,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         lastNotificationTimestamp = System.currentTimeMillis();
+
     }
 
     @Nullable
@@ -60,6 +62,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
             if(System.currentTimeMillis() - lastNotificationTimestamp > frequency){
              notifyForExercise();
             }
+
         }
         else if (isShaking && !isAccelerationChanged()){
             isShaking = false;
@@ -67,7 +70,6 @@ public class AgitationDetectorService extends Service implements SensorEventList
     }
 
     private void notifyForExercise() {
-
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Do an exercise?", "You seem agitated, click to start PERLS!");
         notificationHelper.getManager().notify(1, nb.build());
         lastNotificationTimestamp = System.currentTimeMillis();
@@ -75,6 +77,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
 //        Intent intent = new Intent(this, ReflectionReview.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        startActivity(intent);
+
     }
 
     private boolean isAccelerationChanged() {
