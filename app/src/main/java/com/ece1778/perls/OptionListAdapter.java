@@ -79,11 +79,14 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
                 }
                 holder.optionCardView.setCardBackgroundColor(mContext.getColor(R.color.dark_purple));
                 String answer = holder.optionTextView.getText().toString();
+                //Log.d("answer: ", answer);
+                Log.d("position", "" + mViewModel.getPosition());
 
                 switch (mViewModel.getPosition()) {
                     case 0:
                         Question q1 = mViewModel.getQ1().getValue();
                         q1.setAnswer(answer);
+                        Log.d("answer: ", q1.getAnswer());
                         mViewModel.getQ1().setValue(q1);
                         break;
 

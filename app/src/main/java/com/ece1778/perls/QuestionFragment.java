@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class QuestionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mPosition = getArguments().getInt(ARG_POSITION);
+            Log.d("fragment pos", "" + mPosition);
         }
 
         mViewModel = new ViewModelProvider(requireActivity()).get(ExerciseViewModel.class);
