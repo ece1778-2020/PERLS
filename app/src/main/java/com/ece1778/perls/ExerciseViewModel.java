@@ -131,11 +131,11 @@ public class ExerciseViewModel extends ViewModel {
             case 1:
                 text = "What are you reacting to?";
                 options = new ArrayList<String>();
-                options.add("An important goal was blocked.");
-                options.add("A desired activity got interrupted or prevented.");
-                options.add("You or someone you care about was hurt/attacked by others.");
-                options.add("You or someone you care about was insulted/threatened by others.");
-                options.add("Your integrity or that of your social group was offended/threatened. ");
+                options.add("Goal blocked.");
+                options.add("Activity prevented/interrupted.");
+                options.add("Someone hurt/attacked.");
+                options.add("Someone insulted/threatened.");
+                options.add("Integrity or morals offended. ");
                 options.add("Physical or emotional pain.");
                 options.add("None of these.");
                 q1.setValue(new Question(text, options, ""));
@@ -143,24 +143,24 @@ public class ExerciseViewModel extends ViewModel {
             case 2:
                 text = "Did you think any of the following?";
                 options = new ArrayList<String>();
-                options.add("I've been treated unfairly. ");
-                options.add("This shouldn't have happened/things should be different. ");
-                options.add("That I'm right and others don't agree.");
-                options.add("What happened was wrong and/or unacceptable.");
-                options.add("I've been ruminating about the situation.");
-                options.add("None of these.");
+                options.add("Unfair treatment. ");
+                options.add("This shouldn't have happened.");
+                options.add("Others disagree.");
+                options.add("This is wrong/unacceptable.");
+                options.add("Ruminating about situation.");
+                options.add("Feelings hurt.");
                 q2.setValue(new Question(text, options, ""));
                 break;
 
             case 3:
                 text = "Did you feel any of the following?";
                 options = new ArrayList<String>();
-                options.add("Muscles tightening");
-                options.add("Teeth clamping");
-                options.add("Hands clenching");
-                options.add("Feeling flush/hot ");
-                options.add("Being unable to stop tears");
-                options.add("Wanting to attack or lash out");
+                options.add("Muscles tightening.");
+                options.add("Teeth clamping.");
+                options.add("Hands clenching.");
+                options.add("Feeling flush/hot.");
+                options.add("Being tearful/overwhelmed.");
+                options.add("Wanting to attack/lash out.");
                 q3.setValue(new Question(text, options, ""));
                 break;
 
@@ -201,7 +201,7 @@ public class ExerciseViewModel extends ViewModel {
                     options.add("Restrain yourself");
                     q5.setValue(new Question(text, options, ""));
                 }
-
+                
                 break;
 
             case 6:
@@ -212,14 +212,14 @@ public class ExerciseViewModel extends ViewModel {
                 }
 
                 options = new ArrayList<String>();
-                options.add("step into the other person's shoes/see the situation from their point of view");
-                options.add("change your posture/relax chest and stomach muscles/unclench");
-                options.add("slowly bring the corners of your mouth up to a half-smile");
-                options.add("relax your hands and hold your palms face up on your lap");
-                options.add("pace your breathing slowly and deliberately");
-                options.add("gently avoid the person/situation");
-                options.add("be a little nice, half-agree, or compliment");
-                options.add("engage in another physically energetic but non-violent activity (i.e., push-ups)");
+                options.add("See the situation from their point of view");
+                options.add("Relax muscles/unclench");
+                options.add("Complete a half-smile with mouth.");
+                options.add("Hold palms face up on lap.");
+                options.add("Lower pace of breathing slowly.");
+                options.add("Gently avoid the person/situation.");
+                options.add("Half-agree or compliment angry person.");
+                options.add("Physical but non-violent activity");
                 actions.setValue(new Question(text, options, ""));
                 break;
 

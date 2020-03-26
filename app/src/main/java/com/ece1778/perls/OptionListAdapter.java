@@ -24,7 +24,6 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
     private LayoutInflater mInflater;
     private Context mContext;
     private ExerciseViewModel mViewModel;
-    private int mPosition;
 
     public OptionListAdapter(Context context, ArrayList<String> optionList, ExerciseViewModel model){
         mInflater = LayoutInflater.from(context);
@@ -79,8 +78,6 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
                 }
                 holder.optionCardView.setCardBackgroundColor(mContext.getColor(R.color.dark_purple));
                 String answer = holder.optionTextView.getText().toString();
-                //Log.d("answer: ", answer);
-                Log.d("position", "" + mViewModel.getPosition());
 
                 switch (mViewModel.getPosition()) {
                     case 0:
