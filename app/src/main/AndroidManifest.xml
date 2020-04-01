@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectorActivity"></activity>
+        <activity android:name=".ActionActivity"></activity>
+        <activity android:name=".SelectorActivity" />
         <activity android:name=".LessonActivity" />
         <activity android:name=".ReflectionReview" />
         <activity android:name=".ReflectionActivity" />
@@ -26,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".AgitationDetectorService"></service>
+
+        <service android:name=".AgitationDetectorService" />
     </application>
 
 </manifest>
