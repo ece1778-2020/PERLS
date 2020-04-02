@@ -60,4 +60,18 @@ public class SelectorActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+
+    public void startAudioExercise(View view) {
+        UUID exer_uid = UUID.randomUUID();
+        Long ts = System.currentTimeMillis();
+        Intent intent = new Intent(this, AudioActivity.class);
+        intent.putExtra(SESSION_ID, session_id);
+        intent.putExtra(TIMESTAMP_ID, session_ts);
+        intent.putExtra(EMOTION_ID, emotion_id);
+        intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
+        intent.putExtra(EXERCISE, getString(R.string.audio));
+        intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
+        finish();
+        startActivity(intent);
+    }
 }

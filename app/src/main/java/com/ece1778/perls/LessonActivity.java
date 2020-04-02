@@ -20,6 +20,8 @@ public class LessonActivity extends AppCompatActivity {
     private static final String SESSION_ID="sessionId";
     private static final String EXERSISE_TIMESTAMP= "exersiseTimestamp";
     private static final String EXERCISE = "exercise_name";
+    private static final String POSITION = "position";
+    private static final String ANSWERS = "answers";
 
     private RecyclerView mRecyclerView;
     private LessonListAdapter mAdapter;
@@ -92,14 +94,30 @@ public class LessonActivity extends AppCompatActivity {
     }
 
     public void skip_lesson(View view) {
+        ArrayList<String> answers = new ArrayList<>();
         Intent intent = new Intent(this, ExerciseActivity.class);
+        Bundle data = new Bundle();
+        data.putString(SESSION_ID, session_id);
+        data.putString(TIMESTAMP_ID, session_ts);
+        data.putString(EMOTION_ID, emotion_id);
+        data.putString(EXERSISE_TIMESTAMP, exercise_ts);
+        data.putString(EXERCISE_MESSAGE_ID, exercise_uid);
+        data.putString(EXERCISE, exercise);
+        data.putInt(POSITION, 1);
+        //find a way to add the selected as the answer
+        data.putStringArrayList(ANSWERS, answers);
+        intent.putExtras(data);
+        startActivity(intent);
+
+        /*Intent intent = new Intent(this, ExerciseActivity.class);
         intent.putExtra(SESSION_ID, session_id);
         intent.putExtra(TIMESTAMP_ID, session_ts);
         intent.putExtra(EMOTION_ID, emotion_id);
         intent.putExtra(EXERCISE_MESSAGE_ID, exercise_uid);
         intent.putExtra(EXERCISE, exercise);
         intent.putExtra(EXERSISE_TIMESTAMP, exercise_ts);
+        intent.putExtra(POSITION, 1);
         finish();
-        startActivity(intent);
+        startActivity(intent);*/
     }
 }

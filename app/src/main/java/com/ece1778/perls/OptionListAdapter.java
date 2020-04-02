@@ -78,12 +78,19 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
                 }
                 holder.optionCardView.setCardBackgroundColor(mContext.getColor(R.color.dark_purple));
                 String answer = holder.optionTextView.getText().toString();
+                ArrayList<String> answers = new ArrayList<>();
+                answers = mViewModel.getAnswers();
+                answers.add(answer);
+                mViewModel.setAnswers(answers);
+                //String[] yay;
 
-                switch (mViewModel.getPosition()) {
+
+               // Toast.makeText(mContext, "Click listener working", Toast.LENGTH_SHORT).show();
+
+                /*switch (mViewModel.getPosition()) {
                     case 0:
                         Question q1 = mViewModel.getQ1().getValue();
                         q1.setAnswer(answer);
-                        Log.d("answer: ", q1.getAnswer());
                         mViewModel.getQ1().setValue(q1);
                         break;
 
@@ -120,7 +127,7 @@ public class OptionListAdapter extends RecyclerView.Adapter<OptionListAdapter.Op
                     default:
 
                         //return null;
-                }
+                }*/
 
             }
         });

@@ -19,33 +19,50 @@
         android:textAlignment="center"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/button_oa"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_ps"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="68dp"
-        android:background="@color/medium_purple"
-        android:text="@string/opposite_action"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:onClick="startOppositeAction"/>
-
-    <Button
-        android:id="@+id/button_ps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="169dp"
-        android:text="@string/problem_solving"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_oa"
-        android:onClick="startProblemSolving"
-        android:background="@color/medium_purple"/>
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_oa"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="68dp"
+            android:background="@color/medium_purple"
+            android:text="@string/opposite_action"
+            android:onClick="startOppositeAction"/>
+
+        <Button
+            android:id="@+id/button_ps"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="68dp"
+            android:text="@string/problem_solving"
+            android:onClick="startProblemSolving"
+            android:background="@color/medium_purple"/>
+
+        <Button
+            android:id="@+id/button_audio"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/audio_exercise"
+            android:onClick="startAudioExercise"
+            android:background="@color/medium_purple"/>
+
+    </LinearLayout>
+
+
+
+
+
+
 
 </RelativeLayout>
