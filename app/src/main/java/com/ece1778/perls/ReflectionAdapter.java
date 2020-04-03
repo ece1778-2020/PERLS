@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 class ReflectionAdapter extends RecyclerView.Adapter<ReflectionAdapter.ReflectionViewHolder> {
 
     private ArrayList<Reflection> reflections;
+    private Context mContext;
 
-    public ReflectionAdapter(ArrayList<Reflection> reflections){
+    public ReflectionAdapter(Context context, ArrayList<Reflection> reflections){
         this.reflections = reflections;
+        this.mContext = context;
     }
 
     @NonNull
@@ -40,6 +42,22 @@ class ReflectionAdapter extends RecyclerView.Adapter<ReflectionAdapter.Reflectio
         holder.action.setText(reflection.getAction());
         holder.reflection.setText(reflection.getReflection());
 
+        if (!reflection.getName().equals(mContext.getString(R.string.opposite_action))){
+            holder.q1.setVisibility(View.GONE);
+            holder.q1_prompt.setVisibility(View.GONE);
+            holder.q2.setVisibility(View.GONE);
+            holder.q2_prompt.setVisibility(View.GONE);
+            holder.q3.setVisibility(View.GONE);
+            holder.q3_prompt.setVisibility(View.GONE);
+            holder.q4.setVisibility(View.GONE);
+            holder.q4_prompt.setVisibility(View.GONE);
+            holder.q5_prompt.setVisibility(View.GONE);
+            holder.q5.setVisibility(View.GONE);
+            holder.action.setVisibility(View.GONE);
+            holder.action_prompt.setVisibility(View.GONE);
+
+        }
+
     }
 
     @Override
@@ -51,18 +69,25 @@ class ReflectionAdapter extends RecyclerView.Adapter<ReflectionAdapter.Reflectio
     }
 
     public static class ReflectionViewHolder extends  RecyclerView.ViewHolder{
-        TextView emotion, q1, q2, q3, q4, q5, action, reflection;
+        TextView emotion, q1, q2, q3, q4, q5, action, reflection, q1_prompt, q2_prompt, q3_prompt, q4_prompt, q5_prompt, action_prompt;
 
         public ReflectionViewHolder(View itemView){
             super(itemView);
             emotion = itemView.findViewById(R.id.emotion);
             q1 = itemView.findViewById(R.id.q1);
+            q1_prompt = itemView.findViewById(R.id.q1_prompt);
+            q2_prompt = itemView.findViewById(R.id.q2_prompt);
             q2 = itemView.findViewById(R.id.q2);
+            q3_prompt = itemView.findViewById(R.id.q3_prompt);
             q3 = itemView.findViewById(R.id.q3);
+            q4_prompt = itemView.findViewById(R.id.q4_prompt);
             q4 = itemView.findViewById(R.id.q4);
+            q5_prompt = itemView.findViewById(R.id.q5_prompt);
             q5 = itemView.findViewById(R.id.q5);
+            action_prompt = itemView.findViewById(R.id.action_prompt);
             action = itemView.findViewById(R.id.action);
             reflection = itemView.findViewById(R.id.reflection);
+
         }
     }
 }

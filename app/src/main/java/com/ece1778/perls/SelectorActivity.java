@@ -50,12 +50,12 @@ public class SelectorActivity extends AppCompatActivity {
     public void startProblemSolving(View view) {
         UUID exer_uid = UUID.randomUUID();
         Long ts = System.currentTimeMillis();
-        Intent intent = new Intent(this, LessonActivity.class);
+        Intent intent = new Intent(this, TippActivity.class);
         intent.putExtra(SESSION_ID, session_id);
         intent.putExtra(TIMESTAMP_ID, session_ts);
         intent.putExtra(EMOTION_ID, emotion_id);
         intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
-        intent.putExtra(EXERCISE, getString(R.string.problem_solving));
+        intent.putExtra(EXERCISE, getString(R.string.tipp));
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
         finish();
         startActivity(intent);

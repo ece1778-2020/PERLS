@@ -54,7 +54,7 @@ public class ReflectionReview extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        mReflectionAdapter = new ReflectionAdapter(reflections);
+        mReflectionAdapter = new ReflectionAdapter(this, reflections);
         recyclerView.setAdapter(mReflectionAdapter);
     }
 
@@ -72,16 +72,32 @@ public class ReflectionReview extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
                                 HashMap<String, String> exercise = new HashMap<>();
-                                exercise.put("uid", document.get("uid").toString());
-                                exercise.put("timestamp", document.get("timestamp").toString());
-                                exercise.put("emotion",document.get("emotion").toString());
-                                exercise.put("q1", document.get("q1").toString());
-                                exercise.put("q2", document.get("q2").toString());
-                                exercise.put("q3", document.get("q3").toString());
-                                exercise.put("q4", document.get("q4").toString());
-                                exercise.put("q5", document.get("q5").toString());
-                                exercise.put("action", document.get("action").toString());
-                                exercises.put(document.get("uid").toString(), exercise);
+                                if (document.get("name").equals(getString(R.string.opposite_action))) {
+                                    exercise.put("uid", document.get("uid").toString());
+                                    exercise.put("timestamp", document.get("timestamp").toString());
+                                    exercise.put("emotion",document.get("emotion").toString());
+                                    exercise.put("name", document.get("name").toString());
+                                    exercise.put("q1", document.get("q1").toString());
+                                    exercise.put("q2", document.get("q2").toString());
+                                    exercise.put("q3", document.get("q3").toString());
+                                    exercise.put("q4", document.get("q4").toString());
+                                    exercise.put("q5", document.get("q5").toString());
+                                    exercise.put("action", document.get("action").toString());
+                                    exercises.put(document.get("uid").toString(), exercise);
+                                } else {
+                                    exercise.put("uid", document.get("uid").toString());
+                                    exercise.put("timestamp", document.get("timestamp").toString());
+                                    exercise.put("emotion",document.get("emotion").toString());
+                                    exercise.put("name", document.get("name").toString());
+                                    exercise.put("q1", "");
+                                    exercise.put("q2", "");
+                                    exercise.put("q3", "");
+                                    exercise.put("q4", "");
+                                    exercise.put("q5", "");
+                                    exercise.put("action", "");
+                                    exercises.put(document.get("uid").toString(), exercise);
+                                }
+
                             }
                             getReflections();
                         } else {
@@ -128,6 +144,7 @@ public class ReflectionReview extends AppCompatActivity {
             HashMap<String, String> exercise = exercises.get(response.get("uid"));
             Reflection ref = new Reflection(
                     exercise.get("emotion"),
+                    exercise.get("name"),
                     exercise.get("q1"),
                     exercise.get("q2"),
                     exercise.get("q3"),

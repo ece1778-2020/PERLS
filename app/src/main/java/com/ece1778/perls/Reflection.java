@@ -2,10 +2,11 @@ package com.ece1778.perls;
 
 public class Reflection {
 
-    private String emotion, q1, q2, q3, q4, q5, action, reflection;
+    private String emotion, name, q1, q2, q3, q4, q5, action, reflection;
 
-    public Reflection(String emotion, String q1, String q2, String q3, String q4, String q5, String action, String reflection) {
+    public Reflection(String emotion, String name, String q1, String q2, String q3, String q4, String q5, String action, String reflection) {
         this.emotion = emotion;
+        this.name = name;
         this.q1 = q1;
         this.q2 = q2;
         this.q3 = q3;
@@ -80,5 +81,11 @@ public class Reflection {
     }
 
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

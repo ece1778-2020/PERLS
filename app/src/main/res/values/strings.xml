@@ -56,6 +56,12 @@
     <string name="pause">Pause</string>
     <string name="audio_exercise">Audio Exercise</string>
     <string name="audio_text">This Progressive Muscle Relaxation Exercise helps you relax and lower your stress levels</string>
+    <string name="tipp_text">This exercise can help you change intense emotions quickly using your body chemistry.</string>
+    <string name="tt">Tip the Temperature</string>
+    <string name="ie">Intense Exercise</string>
+    <string name="pb">Paced Breathing</string>
+    <string name="pmr">Pair Muscle Relaxation</string>
+    <string name="tipp">TIPP</string>
 
 
 </resources>
