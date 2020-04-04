@@ -44,7 +44,6 @@ public class ReflectionActivity extends AppCompatActivity {
 
         mTextView = findViewById(R.id.textView);
         mReflectionText = findViewById(R.id.reflection_editText);
-        //get this from the emotion passed from emotion selector -> exercise activity
         Intent intent = getIntent();
         session_id = intent.getStringExtra(SESSION_ID);
         session_ts = intent.getStringExtra(TIMESTAMP_ID);

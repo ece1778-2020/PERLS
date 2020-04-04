@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@color/lighter_purple"
+    android:padding="16dp"
     tools:context=".ActionActivity">
 
 
@@ -13,67 +14,53 @@
         android:id="@+id/action_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="72dp"
         android:layout_marginStart="12dp"
-        android:textSize="18sp"
-        android:textStyle="italic" />
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/timer_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:layout_below="@+id/action_textView"
         android:text="@string/timer"
         android:textAlignment="center"
         android:textSize="42sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="72dp"
-        android:gravity="center_horizontal"
-        android:text="@string/start"
-        android:textAlignment="center" />
+    <ImageView
+        android:id="@+id/button_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/timer_textView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_play_circle_filled_black_24dp" />
 
-    <TextView
-        android:id="@+id/congs_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/congrats"
-        android:textAlignment="center"
-        android:visibility="gone" />
+    <ImageView
+        android:id="@+id/button_pause"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:layout_below="@id/timer_textView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_pause_circle_filled_black_24dp" />
 
-
-    <TextView
-        android:id="@+id/reflection_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/go_to_reflection"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textColor="@color/dark_purple"
-        android:textColorLink="@color/dark_purple" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:layout_alignParentBottom="true"
-        android:text="@android:string/cancel"
-        android:onClick="cancelExercise"
+        android:text="@string/done"
         android:background="@color/medium_purple"
-        android:layout_gravity="bottom"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"/>
 
 
-</LinearLayout>
+</RelativeLayout>

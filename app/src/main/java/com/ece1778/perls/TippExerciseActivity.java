@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,9 @@ public class TippExerciseActivity extends AppCompatActivity {
 
     private TextView mTimer, mIntro, mEx1, mEx2, mEx3, mEx4, mEx5;
     private Button mStartTimer, mDone;
+    private ImageView mPlay;
+    private ImageView mPause;
+    private CountDownTimer mCounter;
 
     private static final String EXERCISE_COLLECTION = "exercises";
     private static final String SESSION_COLLECTION="sessions";
@@ -51,28 +55,42 @@ public class TippExerciseActivity extends AppCompatActivity {
         mEx4 = findViewById(R.id.ex4);
         mEx5 = findViewById(R.id.ex5);
         mDone = findViewById(R.id.done);
+        mPlay = findViewById(R.id.button_play);
+        mPause = findViewById(R.id.button_pause);
 
-        mStartTimer.setOnClickListener(new View.OnClickListener() {
+        mCounter = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                long seconds = millisUntilFinished / 1000;
+                String t = (seconds / 60) + ":" + (seconds % 60);
+                mTimer.setText(t);
+            }
+
+            public void onFinish() {
+
+            }
+        };
+
+        mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CountDownTimer(30000, 1000) {
+                mPlay.setVisibility(View.GONE);
+                mPause.setVisibility(View.VISIBLE);
+                mCounter.start();
+            }
+        });
 
-                    public void onTick(long millisUntilFinished) {
-                        long seconds = millisUntilFinished / 1000;
-                        String t = (seconds / 60) + ":" + (seconds % 60);
-                        mTimer.setText(t);
-                    }
+        mPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPlay.setVisibility(View.VISIBLE);
+                mPause.setVisibility(View.GONE);
+                mCounter.cancel();
 
-                    public void onFinish() {
-
-                    }
-                }.start();
             }
         });
 
         Intent intent = getIntent();
-        //Bundle data = intent.getExtras();
-        //Log.d("checking session id: ", intent.getStringExtra(EXERCISE));
         session_id = intent.getStringExtra(SESSION_ID);
         session_ts = intent.getStringExtra(TIMESTAMP_ID);
         emotion_id = intent.getStringExtra(EMOTION_ID);
@@ -91,7 +109,6 @@ public class TippExerciseActivity extends AppCompatActivity {
         exercise.put("timestamp", exercise_ts);
         exercise.put("name", exercise_name);
         exercise.put("emotion", emotion_id);
-
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -122,26 +139,25 @@ public class TippExerciseActivity extends AppCompatActivity {
     public void loadData() {
         if (type.equals(getString(R.string.tt))) {
             mIntro.setText("Okay, tip the temperature of your face using cold water to calm down fast.");
-            mEx1.setText("- Hold your breath and run your face over cold water.");
-            mEx2.setText("- Hold an ice pack (or zip-lock bag of cold water) on your face, neck, or hands.");
+            mEx1.setText("-- Hold your breath and run your face over cold water.");
+            mEx2.setText("-- Hold an ice pack on your face, neck, or hands.");
         }
         else if (type.equals(getString(R.string.ie))) {
             mIntro.setText("Okay, initiate intense brief exercise to calm down your body when it is revved up by emotion.");
-            mEx1.setText("- Engage in an intense exercise such as jumping jacks on the spot for 30 seconds.");
-            mEx2.setText("- Expend your body's stored up physical energy by running on the spot, walking around, jumping, lifting weights, pushups, etc.");
+            mEx1.setText("-- Engage in an intense exercise such as jumping jacks on the spot");
+            mEx2.setText("-- Expend your body's stored up physical energy by running on the spot, walking around,...");
         }
         else if (type.equals(getString(R.string.pb))) {
             mIntro.setText("Okay, initiate paced breathing to slow it down.");
-            mEx1.setText("- Breathe deeply into your belly.");
-            mEx2.setText("- Slow your pace of inhaling and exhaling (try to get down to 5-6 breaths per minute).");
-            mEx3.setText("- Breathe out more slowly than you breathe in (e.g., 5 seconds in and 7 seconds out).");
+            mEx1.setText("-- Breathe deeply into your belly.");
+            mEx2.setText("-- Slow your pace of inhaling and exhaling (try to get down to 5-6 breaths per minute).");
+            mEx3.setText("-- Breathe out more slowly than you breathe in (e.g., 5 seconds in and 7 seconds out).");
         } else {
             mIntro.setText("Okay, initiate paired muscle relaxation to calm down while slowing your breathing too.");
-            mEx1.setText("- While breathing into your belly deeply tense your body muscles (not so much as to cause a cramp).");
-            mEx2.setText("- Notice the tension in your body.");
-            mEx3.setText("- While breathing out, say the word \"relax\" in your mind.");
-            mEx4.setText("- Let go of all the tension. ");
-            mEx5.setText("- Notice the difference in your body.");
+            mEx1.setText("-- While breathing into your belly deeply tense your body muscles.");
+            mEx2.setText("-- Notice the tension in your body.");
+            mEx3.setText("-- While breathing out, say the word \"relax\" in your mind.");
+            mEx4.setText("-- Let go of all the tension. ");
         }
 
 

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/lighter_purple"
     tools:context=".TippExerciseActivity">
 
     <TextView
@@ -14,16 +15,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text=""
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="50dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="30dp"/>
 
     <LinearLayout
         android:id="@+id/examples"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="15dp"
+        android:padding="12dp"
         android:layout_below="@+id/tipp_intro">
 
         <TextView
@@ -82,17 +86,23 @@
         android:textSize="42sp"
         android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="72dp"
-        android:gravity="center_horizontal"
-        android:text="@string/start"
-        android:layout_below="@+id/timer_textView"
+    <ImageView
+        android:id="@+id/button_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/timer_textView"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        app:srcCompat="@drawable/ic_play_circle_filled_black_24dp" />
+
+    <ImageView
+        android:id="@+id/button_pause"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:layout_below="@id/timer_textView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_pause_circle_filled_black_24dp" />
+
 
     <Button
         android:id="@+id/done"
@@ -101,6 +111,8 @@
         android:text="@string/done"
         android:background="@color/medium_purple"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:onClick="startReflection"/>
 
 </RelativeLayout>

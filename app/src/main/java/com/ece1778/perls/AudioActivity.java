@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -24,8 +25,10 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class AudioActivity extends AppCompatActivity {
     private SeekBar mSeekBar;
-    private Button mPlay;
-    private Button mPause;
+    //private Button mPlay;
+    //private Button mPause;
+    private ImageView mPlay;
+    private ImageView mPause;
     private MediaPlayer mediaPlayer;
     private Handler mHandler;
     private Runnable mRunnable;
@@ -83,6 +86,8 @@ public class AudioActivity extends AppCompatActivity {
         mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mPlay.setVisibility(View.GONE);
+                mPause.setVisibility(View.VISIBLE);
                 mediaPlayer.start();
                 mHandler.postDelayed(mRunnable , 1000);
             }
@@ -91,6 +96,8 @@ public class AudioActivity extends AppCompatActivity {
         mPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mPause.setVisibility(View.GONE);
+                mPlay.setVisibility(View.VISIBLE);
                 mediaPlayer.pause();
             }
         });

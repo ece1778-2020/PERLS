@@ -28,15 +28,10 @@ public class MainActivity extends AppCompatActivity {
         mExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //UUID uid = UUID.randomUUID();
-                //String exerciseId = uid.toString();
                 UUID session_uid = UUID.randomUUID();
                 Long ts = System.currentTimeMillis();
-                // Toast.makeText(MainActivity.this, "exercise id generated", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, EmotionSelector.class);
-                //intent.putExtra(EXERCISE_MESSAGE_ID, exerciseId);
                 intent.putExtra(TIMESTAMP_ID, ts.toString());
-                //Log.d("checking session id: ", session_uid.toString());
                 intent.putExtra(SESSION_ID, session_uid.toString());
                 startActivity(intent);
             }

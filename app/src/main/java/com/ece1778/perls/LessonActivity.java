@@ -38,14 +38,8 @@ public class LessonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
-        //mViewModel = new ViewModelProvider(this).get(ExerciseViewModel.class);
+
         Intent intent = getIntent();
-        /*mViewModel.setEmotion(intent.getStringExtra(EMOTION_ID));
-        mViewModel.setUid(intent.getStringExtra(EXERCISE_MESSAGE_ID));
-        mViewModel.setSession_ts(intent.getStringExtra(TIMESTAMP_ID));
-        mViewModel.setExercise_name(EXERCISE);
-        mViewModel.setTimestamp(intent.getStringExtra(EXERSISE_TIMESTAMP));
-        mViewModel.setSession_uid(intent.getStringExtra(SESSION_ID));*/
         session_id = intent.getStringExtra(SESSION_ID);
         session_ts = intent.getStringExtra(TIMESTAMP_ID);
         emotion_id = intent.getStringExtra(EMOTION_ID);
@@ -53,35 +47,9 @@ public class LessonActivity extends AppCompatActivity {
         exercise_ts = intent.getStringExtra(EXERSISE_TIMESTAMP);
         exercise = intent.getStringExtra(EXERCISE);
         //Log.d("checking session id: ", exercise_uid);
-
-
-        //add all the data and notify dataset chane or something
-        mLessonList = new ArrayList<>();
-        mRecyclerView = findViewById(R.id.lessonRecyclerView);
-        mAdapter = new LessonListAdapter(this, mLessonList);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL, false));
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mAdapter);
-        //mLessonList.add("yay");
-        //mAdapter.notifyItemChanged(mLessonList.size() - 1);
-        loadLesson();
     }
 
     public void loadLesson() {
-        //mAdapter.notifyItemChanged(mLessonList.size() - 1);
-        /*mLessonList.add(getString(R.string.oa_l1));
-        mLessonList.add(getString(R.string.oa_l2));
-        mLessonList.add(getString(R.string.oa_l3));
-        mLessonList.add(getString(R.string.oa_l4));
-        mLessonList.add(getString(R.string.oa_l5));
-        mLessonList.add(getString(R.string.oa_l6));
-        mLessonList.add(getString(R.string.oa_l7));
-        mAdapter.notifyDataSetChanged();
-        mRecyclerView.scrollToPosition(0);
-        Log.d("load lesson fcn", "got into the fcn");*/
-
         if(exercise == "opposite action".trim()){
             mLessonList.add(getString(R.string.welcome_oa));
             mAdapter.notifyItemChanged(mLessonList.size() - 1);
@@ -93,7 +61,7 @@ public class LessonActivity extends AppCompatActivity {
 
     }
 
-    public void skip_lesson(View view) {
+    public void startExercise(View view) {
         ArrayList<String> answers = new ArrayList<>();
         Intent intent = new Intent(this, ExerciseActivity.class);
         Bundle data = new Bundle();
@@ -104,20 +72,10 @@ public class LessonActivity extends AppCompatActivity {
         data.putString(EXERCISE_MESSAGE_ID, exercise_uid);
         data.putString(EXERCISE, exercise);
         data.putInt(POSITION, 1);
-        //find a way to add the selected as the answer
         data.putStringArrayList(ANSWERS, answers);
         intent.putExtras(data);
+        finish();
         startActivity(intent);
 
-        /*Intent intent = new Intent(this, ExerciseActivity.class);
-        intent.putExtra(SESSION_ID, session_id);
-        intent.putExtra(TIMESTAMP_ID, session_ts);
-        intent.putExtra(EMOTION_ID, emotion_id);
-        intent.putExtra(EXERCISE_MESSAGE_ID, exercise_uid);
-        intent.putExtra(EXERCISE, exercise);
-        intent.putExtra(EXERSISE_TIMESTAMP, exercise_ts);
-        intent.putExtra(POSITION, 1);
-        finish();
-        startActivity(intent);*/
     }
 }

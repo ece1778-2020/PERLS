@@ -37,21 +37,12 @@ public class ExerciseActivity extends AppCompatActivity {
     private static final String ANSWERS = "answers";
     private String session_ts, session_id, exercise_uid, exercise_ts, emotion_id, exercise;
     private int position;
-    //private String[] answers;
     private ArrayList<String> answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_exercise);
-
-
-        //if (exercise.equals(getString(R.string.problem_solving)) && position)
-        setContentView(R.layout.fragment_question);
-
-        //mAdapter = new ViewPagerAdapter(this, getSupportFragmentManager());
-        //mViewPager = findViewById(R.id.view_pager);
-        //mViewPager.setAdapter(mAdapter);
+        setContentView(R.layout.activity_exercise);
 
         mViewModel = new ViewModelProvider(this).get(ExerciseViewModel.class);
         answers = new ArrayList<>();
@@ -65,24 +56,9 @@ public class ExerciseActivity extends AppCompatActivity {
         exercise_ts = data.getString(EXERSISE_TIMESTAMP);
         exercise_uid  = data.getString(EXERCISE_MESSAGE_ID);
         exercise = data.getString(EXERCISE);
-        //position = Integer.parseInt(intent.getStringExtra(POSITION));
         position = data.getInt(POSITION);
-        //answers = data.getStringArray(ANSWERS);
         answers = data.getStringArrayList(ANSWERS);
         mViewModel.setAnswers(answers);
-        //mNext = findViewById(R.id.next);
-        //mPrevious = findViewById(R.id.previous);
-        //mPrevious.setVisibility(View.GONE);
-
-        //uncomment this when activity is connected to EmotionSelector
-
-        /*mViewModel.setEmotion(emotion_id);
-        mViewModel.setUid(exercise_uid);
-        mViewModel.setSession_ts(session_ts);
-        mViewModel.setExercise_name(exercise);
-        mViewModel.setTimestamp(exercise_ts);
-        mViewModel.setSession_uid(session_id);
-        mViewModel.setContext(this);*/
 
         mTextView = findViewById(R.id.question);
         mOptionList = new ArrayList<>();
@@ -92,7 +68,6 @@ public class ExerciseActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadData(position);
-
 
     }
 
@@ -104,12 +79,8 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     public void goNext(View view) {
-        //Log.d("Exercise Activity", "getting into the goNext fcn");
-
-        //mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
         Intent intent;
         if (position == 6) {
-            //finish();
             intent = new Intent(this, ActionActivity.class);
         } else {
             intent = new Intent(this, ExerciseActivity.class);
@@ -123,7 +94,6 @@ public class ExerciseActivity extends AppCompatActivity {
         data.putString(EXERCISE_MESSAGE_ID, exercise_uid);
         data.putString(EXERCISE, exercise);
         data.putInt(POSITION, position + 1);
-        //find a way to add the selected as the answer
         data.putStringArrayList(ANSWERS, answers);
         intent.putExtras(data);
         finish();
@@ -131,20 +101,11 @@ public class ExerciseActivity extends AppCompatActivity {
 
     }
 
-    public void goPrevious(View view) {
-        //Log.d("Exercise Activity", "getting into the goPrevious fcn");
-        mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-    }
-
     private void loadData(int position) {
 
-        Question qn;
-        String text;
-        ArrayList<String> options;
         switch (position) {
             case 1:
                 mTextView.setText("What are you reacting to?");
-                options = new ArrayList<String>();
                 mOptionList.add("Goal blocked.");
                 mOptionList.add("Activity prevented/interrupted.");
                 mOptionList.add("Someone hurt/attacked.");
@@ -158,7 +119,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
             case 2:
                 mTextView.setText("Did you think any of the following?");
-                options = new ArrayList<String>();
                 mOptionList.add("Unfair treatment. ");
                 mOptionList.add("This shouldn't have happened.");
                 mOptionList.add("Others disagree.");
@@ -171,7 +131,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
             case 3:
                 mTextView.setText("Did you feel any of the following?");
-                options = new ArrayList<String>();
                 mOptionList.add("Muscles tightening.");
                 mOptionList.add("Teeth clamping.");
                 mOptionList.add("Hands clenching.");
@@ -184,7 +143,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
             case 4:
                 mTextView.setText("Do you feel your emotion is a valid reaction to the situation?");
-                options = new ArrayList<String>();
                 mOptionList.add("Yes");
                 mOptionList.add("No");
                 mOptionList.add("Maybe");
@@ -194,12 +152,8 @@ public class ExerciseActivity extends AppCompatActivity {
                 break;
 
             case 5:
-                /*Log.d("exercise_name", exercise_name);
-                Log.d("exercise_name2", context.getString(R.string.opposite_action));*/
-
                 if (exercise.equals(getString(R.string.opposite_action))) {
                     mTextView.setText("What is your urge to act on this emotion?");
-                    //options = new ArrayList<String>();
                     mOptionList.add("Physically/verbally attacking");
                     mOptionList.add("Making aggressive/threatening gestures");
                     mOptionList.add("Pounding, throwing, breaking");
@@ -213,7 +167,6 @@ public class ExerciseActivity extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
                     mRecyclerView.scrollToPosition(0);
                 } else {
-                    //replace this with the
                     mTextView.setText("What has to happen for you to think you have made some progress?");
                     mOptionList.add("Relaxed hands");
                     mOptionList.add("Steady breath");
@@ -221,10 +174,7 @@ public class ExerciseActivity extends AppCompatActivity {
                     mOptionList.add("Restrain yourself");
                     mAdapter.notifyDataSetChanged();
                     mRecyclerView.scrollToPosition(0);
-
-
                 }
-
                 break;
 
             case 6:
@@ -234,7 +184,6 @@ public class ExerciseActivity extends AppCompatActivity {
                     mTextView.setText("Here are some solutions, choose one to continue:");
                 }
 
-                //options = new ArrayList<String>();
                 mOptionList.add("See the situation from their point of view");
                 mOptionList.add("Relax muscles/unclench");
                 mOptionList.add("Complete a half-smile with mouth.");
