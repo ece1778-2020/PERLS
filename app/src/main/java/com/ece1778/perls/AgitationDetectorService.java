@@ -31,7 +31,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
     SensorManager sensorManager;
 
     private long lastNotificationTimestamp = 0;
-    private long frequency = 120000; // maximum notify once a minute (changed to 5 seconds for demo)
+    private long frequency = 5; // maximum notify once a minute (changed to 5 seconds for demo)
 
     @Override
     public void onCreate() {

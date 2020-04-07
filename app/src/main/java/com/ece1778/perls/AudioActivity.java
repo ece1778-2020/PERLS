@@ -56,7 +56,9 @@ public class AudioActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                mediaPlayer.seekTo(progress);
+                if(fromUser) {
+                    mediaPlayer.seekTo(progress);
+                }
 
             }
 

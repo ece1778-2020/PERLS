@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setUI();
-        //startAccelerometer();
+        startAccelerometer();
         mExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
