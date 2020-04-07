@@ -48,9 +48,20 @@
     <string name="select_exercise">Please select an exercise to do</string>
     <string name="opposite_action">Opposite Action</string>
     <string name="problem_solving">Problem Solving</string>
+    <string name="audio">Progress Muscle Relaxation</string>
     <string name="welcome_oa">This exercise is a technique where you do the exact opposite of what you are feeling.\n Let\'s start</string>
     <string name="welcome_ps">This exercise is a technique to reduce or change how you are feeling by figuring out what is the actual problem to be solved.\n Let\'s start</string>
     <string name="more_exercise">More exercise</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="audio_exercise">Audio Exercise</string>
+    <string name="audio_text">This Progressive Muscle Relaxation Exercise helps you relax and lower your stress levels</string>
+    <string name="tipp_text">This exercise can help you change intense emotions quickly using your body chemistry.</string>
+    <string name="tt">Tip the Temperature</string>
+    <string name="ie">Intense Exercise</string>
+    <string name="pb">Paced Breathing</string>
+    <string name="pmr">Pair Muscle Relaxation</string>
+    <string name="tipp">TIPP</string>
 
 
 </resources>

@@ -21,6 +21,7 @@ public class ExerciseViewModel extends ViewModel {
     private int position;
     private String exercise_name;
     private Context context;
+    private ArrayList<String> answers;
 
     public Context getContext() {
         return context;
@@ -262,5 +263,13 @@ public class ExerciseViewModel extends ViewModel {
         }
 
         return actions;
+    }
+
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(ArrayList<String> answers) {
+        this.answers = answers;
     }
 }

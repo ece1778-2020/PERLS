@@ -30,7 +30,6 @@ public class EmotionSelector extends AppCompatActivity {
 
         Intent intent = getIntent();
         ts = intent.getStringExtra(TIMESTAMP_ID);
-        //uid = intent.getStringExtra(EXERCISE_MESSAGE_ID);
         session_id = intent.getStringExtra(SESSION_ID);
         //Log.d("checking session id: ", session_id);
 
@@ -79,12 +78,7 @@ public class EmotionSelector extends AppCompatActivity {
     }
 
     public void startExercise(String type, String ts, String session_id){
-        /*
-        * Change the mainActivity to the exercise activity when that's implemented
-        * */
-        //Intent  intent = new Intent(EmotionSelector.this, ExerciseActivity.class);
         Intent  intent = new Intent(EmotionSelector.this, SelectorActivity.class);
-        //intent.putExtra(EXERCISE_MESSAGE_ID, uid);
         intent.putExtra(TIMESTAMP_ID, ts);
         intent.putExtra(EMOTION_ID, type);
         intent.putExtra(SESSION_ID, session_id);

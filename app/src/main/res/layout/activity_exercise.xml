@@ -4,50 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseActivity">
+    android:orientation="vertical"
+    tools:context=".ExerciseActivity"
+    android:background="@color/lighter_purple"
+    android:padding="20dp">
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/cancel"
-
-        >
-
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <ImageView
-        android:id="@+id/previous"
-        android:layout_width="32dp"
-        android:layout_height="64dp"
-        android:onClick="goPrevious"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
-
-    <ImageView
-        android:id="@+id/next"
-        android:layout_width="32dp"
-        android:layout_height="64dp"
-        android:onClick="goNext"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
-
-    <Button
-        android:id="@+id/cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:text=""
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/optionRecyclerView"
+        android:layout_below="@+id/question"
+        android:layout_centerVertical="true"
+        android:layout_above="@+id/buttons_layout"
+        android:padding="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:text="@android:string/cancel"
-        android:onClick="cancelExercise"
-        android:background="@color/medium_purple"/>
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@android:string/cancel"
+            android:onClick="cancelExercise"
+            android:radius="10dp"
+            android:background="@color/medium_purple"/>
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Next"
+            android:onClick="goNext"
+            android:radius="10dp"
+            android:background="@color/medium_purple"/>
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>
