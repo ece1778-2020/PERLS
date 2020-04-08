@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,11 +50,11 @@ public class TippExerciseActivity extends AppCompatActivity {
         mTimer = findViewById(R.id.timer_textView);
         mStartTimer = findViewById(R.id.start);
         mIntro = findViewById(R.id.tipp_intro);
-        mEx1 = findViewById(R.id.ex1);
-        mEx2 = findViewById(R.id.ex2);
-        mEx3 = findViewById(R.id.ex3);
-        mEx4 = findViewById(R.id.ex4);
-        mEx5 = findViewById(R.id.ex5);
+        mEx1 = findViewById(R.id.ex1_textView);
+        mEx2 = findViewById(R.id.ex2_textView);
+        mEx3 = findViewById(R.id.ex3_textView);
+        mEx4 = findViewById(R.id.ex4_textView);
+        //mEx5 = findViewById(R.id.ex5);
         mDone = findViewById(R.id.done);
         mPlay = findViewById(R.id.button_play);
         mPause = findViewById(R.id.button_pause);
@@ -139,25 +140,63 @@ public class TippExerciseActivity extends AppCompatActivity {
     public void loadData() {
         if (type.equals(getString(R.string.tt))) {
             mIntro.setText("Okay, tip the temperature of your face using cold water to calm down fast.");
-            mEx1.setText("-- Hold your breath and run your face over cold water.");
-            mEx2.setText("-- Hold an ice pack on your face, neck, or hands.");
+            Picasso.get()
+                    .load(R.drawable.tipp1_temp_cold_water_on_face)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex1_imageView));
+            //mEx1.setText("-- Hold your breath and run your face over cold water.");
+            Picasso.get()
+                    .load(R.drawable.tipp1_ice_bag)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex2_imageView));
+            //mEx2.setText("-- Hold an ice pack on your face, neck, or hands.");
         }
         else if (type.equals(getString(R.string.ie))) {
             mIntro.setText("Okay, initiate intense brief exercise to calm down your body when it is revved up by emotion.");
-            mEx1.setText("-- Engage in an intense exercise such as jumping jacks on the spot");
-            mEx2.setText("-- Expend your body's stored up physical energy by running on the spot, walking around,...");
+            Picasso.get()
+                    .load(R.drawable.tipp2_physical_jumping_jacks)
+                    .resize(450, 350)
+                    .into((ImageView) findViewById(R.id.ex1_imageView));
+            //mEx1.setText("-- Engage in an intense exercise such as jumping jacks on the spot");
+            Picasso.get()
+                    .load(R.drawable.tipp2_run_on_spot)
+                    .resize(450, 350)
+                    .into((ImageView) findViewById(R.id.ex2_imageView));
+            //mEx2.setText("-- Expend your body's stored up physical energy by running on the spot");
+            Picasso.get()
+                    .load(R.drawable.tipp2_pushup)
+                    .resize(450, 350)
+                    .into((ImageView) findViewById(R.id.ex3_imageView));
+
+            Picasso.get()
+                    .load(R.drawable.tipp2_lift_weights)
+                    .resize(450, 350)
+                    .into((ImageView) findViewById(R.id.ex4_imageView));
         }
         else if (type.equals(getString(R.string.pb))) {
             mIntro.setText("Okay, initiate paced breathing to slow it down.");
-            mEx1.setText("-- Breathe deeply into your belly.");
-            mEx2.setText("-- Slow your pace of inhaling and exhaling (try to get down to 5-6 breaths per minute).");
-            mEx3.setText("-- Breathe out more slowly than you breathe in (e.g., 5 seconds in and 7 seconds out).");
+            Picasso.get()
+                    .load(R.drawable.tipp3_breathe_deep)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex1_imageView));
+            //mEx1.setText("-- Breathe deeply into your belly.");
+            Picasso.get()
+                    .load(R.drawable.tipp3_deep_breathing)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex2_imageView));
+            //mEx2.setText("-- Slow your pace of inhaling and exhaling (try to get down to 5-6 breaths per minute).");
         } else {
             mIntro.setText("Okay, initiate paired muscle relaxation to calm down while slowing your breathing too.");
-            mEx1.setText("-- While breathing into your belly deeply tense your body muscles.");
-            mEx2.setText("-- Notice the tension in your body.");
-            mEx3.setText("-- While breathing out, say the word \"relax\" in your mind.");
-            mEx4.setText("-- Let go of all the tension. ");
+            Picasso.get()
+                    .load(R.drawable.tipp4_paired_relax_breathing)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex1_imageView));
+            //mEx1.setText("-- While breathing into your belly deeply tense your body muscles.");
+            Picasso.get()
+                    .load(R.drawable.tipp4_paired_relax_say_out_loud)
+                    .resize(500, 500)
+                    .into((ImageView) findViewById(R.id.ex2_imageView));
+            //mEx2.setText("-- While breathing out, say the word \"relax\" in your mind.");
         }
 
 
