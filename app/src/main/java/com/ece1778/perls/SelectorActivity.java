@@ -1,7 +1,5 @@
 package com.ece1778.perls;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.UUID;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectorActivity extends AppCompatActivity {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
@@ -27,12 +27,18 @@ public class SelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector);
         recommender = findViewById(R.id.recommender);
+        //Log.d("checking session id: ", session_id);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
         Intent intent = getIntent();
         session_id = intent.getStringExtra(SESSION_ID);
         session_ts = intent.getStringExtra(TIMESTAMP_ID);
         emotion_id = intent.getStringExtra(EMOTION_ID);
         intensity = intent.getIntExtra(INTENSITY_ID, 0);
-
+        Log.d("intensity", " " + intensity);
         switch (intensity){
             case 1:
                 recommender.setText(R.string.normal);
@@ -43,7 +49,6 @@ public class SelectorActivity extends AppCompatActivity {
             default:
                 recommender.setText(R.string.choice);
         }
-        //Log.d("checking session id: ", session_id);
     }
 
     public void startOppositeAction(View view) {
@@ -57,8 +62,8 @@ public class SelectorActivity extends AppCompatActivity {
         intent.putExtra(EXERCISE, getString(R.string.opposite_action));
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
         //Log.d("checking session id: ", exer_uid);
-        finish();
         startActivity(intent);
+        finish();
     }
 
     public void startProblemSolving(View view) {
@@ -71,8 +76,8 @@ public class SelectorActivity extends AppCompatActivity {
         intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
         intent.putExtra(EXERCISE, getString(R.string.tipp));
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
-        finish();
         startActivity(intent);
+        finish();
     }
 
     public void startAudioExercise(View view) {
@@ -85,7 +90,8 @@ public class SelectorActivity extends AppCompatActivity {
         intent.putExtra(EXERCISE_MESSAGE_ID, exer_uid.toString());
         intent.putExtra(EXERCISE, getString(R.string.audio));
         intent.putExtra(EXERSISE_TIMESTAMP, ts.toString());
-        finish();
         startActivity(intent);
+        finish();
+
     }
 }

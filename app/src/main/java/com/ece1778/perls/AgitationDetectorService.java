@@ -7,22 +7,17 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.util.Log;
-
-import java.sql.Time;
-import java.sql.Timestamp;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import androidx.annotation.Nullable;
 
 public class AgitationDetectorService extends Service implements SensorEventListener {
 
     private float xAccel, yAccel, zAccel;
     private float xPrevAccel, yPrevAccel, zPrevAccel;
     private double netAcceleration;
-    private float accelThreshold = 3.0f, highIntensityThreshold = 7.0f;
+    private float accelThreshold = 1.0f, highIntensityThreshold = 3.0f;
     private int intensity=1;
 
     private NotificationHelper notificationHelper;
@@ -102,7 +97,9 @@ public class AgitationDetectorService extends Service implements SensorEventList
         float dY = yPrevAccel - yAccel;
         float dZ = zPrevAccel - zAccel;
         netAcceleration = (Math.pow(dX,2)+Math.pow(dY,2)+Math.pow(dZ,2))/pollrate;
-        Log.d("currentspeed", " " +netAcceleration );
+        Log.d("currentspeed", " " + netAcceleration );
+        Log.d("currentspeed", " " + ( netAcceleration > accelThreshold) );
+
 //        netAcceleration = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2) + Math.pow(dZ, 2));
         return netAcceleration > accelThreshold;
     }

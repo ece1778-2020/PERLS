@@ -2,9 +2,27 @@ package com.ece1778.perls;
 
 public class Reflection {
 
-    private String emotion, name, q1, q2, q3, q4, q5, action, reflection;
+    private String emotion;
+    private String name;
+    private String q1;
+    private String q2;
+    private String q3;
+    private String q4;
+    private String q5;
+    private String action;
 
-    public Reflection(String emotion, String name, String q1, String q2, String q3, String q4, String q5, String action, String reflection) {
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    private String timestamp;
+    private String reflection;
+
+    public Reflection(String emotion, String name, String q1, String q2, String q3, String q4, String q5, String action, String timestamp, String reflection) {
         this.emotion = emotion;
         this.name = name;
         this.q1 = q1;
@@ -13,6 +31,7 @@ public class Reflection {
         this.q4 = q4;
         this.q5 = q5;
         this.action = action;
+        this.timestamp = timestamp;
         this.reflection = reflection;
     }
 

@@ -9,10 +9,10 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import java.util.UUID;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 
@@ -60,6 +60,8 @@ public class NotificationHelper  extends ContextWrapper {
         //Log.d("checking session id: ", session_uid.toString());
         resutlIntent.putExtra(SESSION_ID, session_uid.toString());
         resutlIntent.putExtra(INTENSITY_ID, intensity);
+        Log.d("intensity notif", " " + intensity);
+
         PendingIntent intent = PendingIntent.getActivity(this, 1, resutlIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle(title)

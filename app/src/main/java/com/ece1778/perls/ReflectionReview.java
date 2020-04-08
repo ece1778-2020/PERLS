@@ -1,10 +1,6 @@
 package com.ece1778.perls;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,11 +10,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.Ref;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ReflectionReview extends AppCompatActivity {
 
@@ -50,10 +52,11 @@ public class ReflectionReview extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setupList(){
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+        reflections.sort(new SortTime());
         mReflectionAdapter = new ReflectionAdapter(this, reflections);
         recyclerView.setAdapter(mReflectionAdapter);
     }
@@ -115,6 +118,7 @@ public class ReflectionReview extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -135,6 +139,7 @@ public class ReflectionReview extends AppCompatActivity {
                 });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void mergeData(){
         Iterator it = responses.entrySet().iterator();
         while(it.hasNext()) {
@@ -151,9 +156,17 @@ public class ReflectionReview extends AppCompatActivity {
                     exercise.get("q4"),
                     exercise.get("q5"),
                     exercise.get("action"),
+                    exercise.get("timestamp"),
                     response.get("response"));
             reflections.add(ref);
         }
         setupList();
+    }
+
+    public class SortTime implements Comparator<Reflection>{
+        @Override
+        public int compare(Reflection reflection, Reflection t1) {
+            return (int)( Long.parseLong(t1.getTimestamp()) - Long.parseLong(reflection.getTimestamp()));
+        }
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PERLS</string>
     <string name="exercise">EXERCISE</string>
-    <string name="review">REVIEW REFLECTION</string>
+    <string name="review">REFLECTION</string>
     <string name="start_exercise">Start Exercise</string>
     <string name="feeling_angry">Alright, so you are feeling Angry</string>
 
@@ -51,7 +51,7 @@
     <string name="audio">Progress Muscle Relaxation</string>
     <string name="welcome_oa">This exercise is a technique where you do the exact opposite of what you are feeling.\n Let\'s start</string>
     <string name="welcome_ps">This exercise is a technique to reduce or change how you are feeling by figuring out what is the actual problem to be solved.\n Let\'s start</string>
-    <string name="more_exercise">More exercise</string>
+    <string name="more_exercise">More exercises</string>
     <string name="play">Play</string>
     <string name="pause">Pause</string>
     <string name="audio_exercise">Audio Exercise</string>

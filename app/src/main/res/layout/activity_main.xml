@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/light_purple"
     tools:context=".MainActivity">
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="188dp"
         android:layout_marginBottom="64dp"
-        android:background="@color/light_purple"
+        android:background="@color/lighter_purple"
         android:fontFamily="sans-serif-black"
         android:text="@string/exercise"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -45,16 +45,25 @@
         android:id="@+id/logo"
         android:layout_width="209dp"
         android:layout_height="190dp"
-        android:layout_marginTop="96dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="logo"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/reflection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.509"
-        app:srcCompat="@drawable/logo"
-        tools:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/plainlogo3"
+        tools:srcCompat="@drawable/plainlogo3" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="230dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/perls_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

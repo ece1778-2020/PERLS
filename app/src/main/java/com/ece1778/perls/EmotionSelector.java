@@ -1,13 +1,12 @@
 package com.ece1778.perls;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EmotionSelector extends AppCompatActivity {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
@@ -35,6 +34,8 @@ public class EmotionSelector extends AppCompatActivity {
         ts = intent.getStringExtra(TIMESTAMP_ID);
         session_id = intent.getStringExtra(SESSION_ID);
         intensity = intent.getIntExtra(INTENSITY_ID, 0);
+        Log.d("intensity emotion", " " + intensity);
+
         //Log.d("checking session id: ", session_id);
 
         mAnnoyed.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +89,7 @@ public class EmotionSelector extends AppCompatActivity {
         intent.putExtra(SESSION_ID, session_id);
         intent.putExtra(INTENSITY_ID, intensity);
         startActivity(intent);
+        finish();
     }
 
     public void setUI(){

@@ -1,20 +1,19 @@
 package com.ece1778.perls;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.UUID;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String EXERCISE_MESSAGE_ID = "exerciseId";
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String SESSION_ID="sessionId";
+    private static final String INTENSITY_ID="intensityId";
 
     private Button mExerciseBtn, mReflectionBtn;
 
@@ -33,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, EmotionSelector.class);
                 intent.putExtra(TIMESTAMP_ID, ts.toString());
                 intent.putExtra(SESSION_ID, session_uid.toString());
+                intent.putExtra(INTENSITY_ID, 0);
+
                 startActivity(intent);
             }
         });
