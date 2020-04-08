@@ -58,6 +58,15 @@ class ReflectionAdapter extends RecyclerView.Adapter<ReflectionAdapter.Reflectio
 
         }
 
+        if(reflection.getName().equals(mContext.getString(R.string.opposite_action))){
+            holder.itemView.setBackgroundResource(R.drawable.customborder);
+        }
+        if(reflection.getName().equals(mContext.getString(R.string.audio))){
+            holder.itemView.setBackgroundResource(R.drawable.customborder2);
+        }
+        if(reflection.getName().equals(mContext.getString(R.string.tipp))){
+            holder.itemView.setBackgroundResource(R.drawable.customborder3);
+        }
     }
 
     @Override

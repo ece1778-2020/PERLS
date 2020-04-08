@@ -62,6 +62,9 @@
     <string name="pb">Paced Breathing</string>
     <string name="pmr">Pair Muscle Relaxation</string>
     <string name="tipp">TIPP</string>
+    <string name="extreme">You seem highly agitated, try the AUDIO exercise</string>
+    <string name="normal">You seem slightly agitated, try the TIPP exercise</string>
+    <string name="choice">Why not try the OPPOSITE ACTION exercise?</string>
 
 
 </resources>

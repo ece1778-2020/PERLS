@@ -22,6 +22,7 @@ public class NotificationHelper  extends ContextWrapper {
     public static final String channelName = "exercise prompt";
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String SESSION_ID="sessionId";
+    private static final String INTENSITY_ID="intensityId";
 
     private NotificationManager manager;
 
@@ -49,7 +50,7 @@ public class NotificationHelper  extends ContextWrapper {
         return manager;
     }
 
-    public NotificationCompat.Builder getChannelNotification(String title, String message){
+    public NotificationCompat.Builder getChannelNotification(String title, String message, int intensity){
         Intent resutlIntent = new Intent(this, EmotionSelector.class);
         UUID session_uid = UUID.randomUUID();
         Long ts = System.currentTimeMillis();
@@ -58,6 +59,7 @@ public class NotificationHelper  extends ContextWrapper {
         resutlIntent.putExtra(TIMESTAMP_ID, ts.toString());
         //Log.d("checking session id: ", session_uid.toString());
         resutlIntent.putExtra(SESSION_ID, session_uid.toString());
+        resutlIntent.putExtra(INTENSITY_ID, intensity);
         PendingIntent intent = PendingIntent.getActivity(this, 1, resutlIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle(title)

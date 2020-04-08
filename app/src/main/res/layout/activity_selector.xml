@@ -14,19 +14,30 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="118dp"
         android:text="@string/select_exercise"
         android:textAlignment="center"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/recommender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="13dp"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="60dp"
+        android:layout_below="@id/recommender"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        android:orientation="vertical">
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/button_oa"
@@ -34,25 +45,25 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
             android:background="@color/medium_purple"
-            android:text="@string/opposite_action"
-            android:onClick="startOppositeAction"/>
+            android:onClick="startOppositeAction"
+            android:text="@string/opposite_action" />
 
         <Button
             android:id="@+id/button_ps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
-            android:text="@string/tipp"
+            android:background="@color/medium_purple"
             android:onClick="startProblemSolving"
-            android:background="@color/medium_purple"/>
+            android:text="@string/tipp" />
 
         <Button
             android:id="@+id/button_audio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/audio_exercise"
+            android:background="@color/medium_purple"
             android:onClick="startAudioExercise"
-            android:background="@color/medium_purple"/>
+            android:text="@string/audio_exercise" />
 
     </LinearLayout>
 

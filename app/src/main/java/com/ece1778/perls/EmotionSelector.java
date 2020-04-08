@@ -14,7 +14,10 @@ public class EmotionSelector extends AppCompatActivity {
     private static final String TIMESTAMP_ID = "timestamp";
     private static final String EMOTION_ID = "emotion";
     private static final String SESSION_ID="sessionId";
-    String ts, uid, session_id;
+    private static final String INTENSITY_ID="intensityId";
+
+    private int intensity;
+    private String ts, uid, session_id;
     private Button  mAnnoyed,
                     mIrritated,
                     mFrustrated,
@@ -31,6 +34,7 @@ public class EmotionSelector extends AppCompatActivity {
         Intent intent = getIntent();
         ts = intent.getStringExtra(TIMESTAMP_ID);
         session_id = intent.getStringExtra(SESSION_ID);
+        intensity = intent.getIntExtra(INTENSITY_ID, 0);
         //Log.d("checking session id: ", session_id);
 
         mAnnoyed.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +86,7 @@ public class EmotionSelector extends AppCompatActivity {
         intent.putExtra(TIMESTAMP_ID, ts);
         intent.putExtra(EMOTION_ID, type);
         intent.putExtra(SESSION_ID, session_id);
+        intent.putExtra(INTENSITY_ID, intensity);
         startActivity(intent);
     }
 

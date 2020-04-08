@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.UUID;
 
@@ -15,20 +16,33 @@ public class SelectorActivity extends AppCompatActivity {
     private static final String EMOTION_ID = "emotion";
     private static final String SESSION_ID="sessionId";
     private static final String EXERSISE_TIMESTAMP= "exersiseTimestamp";
+    private static final String INTENSITY_ID="intensityId";
     private static final String EXERCISE = "exercise_name";
-
+    private TextView recommender;
     private String session_ts, session_id, exercise_uid, exercise_ts, emotion_id;
-
+    private int intensity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector);
-
+        recommender = findViewById(R.id.recommender);
         Intent intent = getIntent();
         session_id = intent.getStringExtra(SESSION_ID);
         session_ts = intent.getStringExtra(TIMESTAMP_ID);
         emotion_id = intent.getStringExtra(EMOTION_ID);
+        intensity = intent.getIntExtra(INTENSITY_ID, 0);
+
+        switch (intensity){
+            case 1:
+                recommender.setText(R.string.normal);
+                break;
+            case 2:
+                recommender.setText(R.string.extreme);
+                break;
+            default:
+                recommender.setText(R.string.choice);
+        }
         //Log.d("checking session id: ", session_id);
     }
 

@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.util.Log;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -20,7 +21,9 @@ public class AgitationDetectorService extends Service implements SensorEventList
 
     private float xAccel, yAccel, zAccel;
     private float xPrevAccel, yPrevAccel, zPrevAccel;
-    private float accelThreshold = 12.5f;
+    private double netAcceleration;
+    private float accelThreshold = 3.0f, highIntensityThreshold = 7.0f;
+    private int intensity=1;
 
     private NotificationHelper notificationHelper;
 
@@ -32,7 +35,8 @@ public class AgitationDetectorService extends Service implements SensorEventList
 
     private long lastNotificationTimestamp = 0;
     private long frequency = 5; // maximum notify once a minute (changed to 5 seconds for demo)
-
+    private long pollrate = 300; //in ms
+    private long lastPollts = 0;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -41,7 +45,7 @@ public class AgitationDetectorService extends Service implements SensorEventList
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
+        lastPollts = System.currentTimeMillis();
     }
 
     @Nullable
@@ -52,6 +56,10 @@ public class AgitationDetectorService extends Service implements SensorEventList
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
+        if (System.currentTimeMillis() - lastPollts < pollrate){
+            return;
+        }
+
         updateAccelerationParameters(sensorEvent.values[0], sensorEvent.values[1], sensorEvent.values[2]);
 
         if(!isShaking && isAccelerationChanged()){
@@ -66,10 +74,18 @@ public class AgitationDetectorService extends Service implements SensorEventList
         else if (isShaking && !isAccelerationChanged()){
             isShaking = false;
         }
+        lastPollts = System.currentTimeMillis();
     }
 
     private void notifyForExercise() {
-        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Something wrong?", "Why not slow down with a PERLS activity?");
+        if(netAcceleration > highIntensityThreshold){
+            intensity = 2;
+        }
+        else {
+            intensity = 1;
+        }
+
+        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Something wrong?", "Why not slow down with a PERLS activity?", intensity);
         notificationHelper.getManager().notify(1, nb.build());
         lastNotificationTimestamp = System.currentTimeMillis();
 
@@ -82,10 +98,13 @@ public class AgitationDetectorService extends Service implements SensorEventList
     private boolean isAccelerationChanged() {
         // Is there sufficient acceleration?
 
-        float dX = Math.abs(xPrevAccel - xAccel);
-        float dY = Math.abs(yPrevAccel - yAccel);
-        float dZ = Math.abs(zPrevAccel - zAccel);
-        return (Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2) + Math.pow(dZ, 2)) > accelThreshold);
+        float dX = xPrevAccel - xAccel;
+        float dY = yPrevAccel - yAccel;
+        float dZ = zPrevAccel - zAccel;
+        netAcceleration = (Math.pow(dX,2)+Math.pow(dY,2)+Math.pow(dZ,2))/pollrate;
+        Log.d("currentspeed", " " +netAcceleration );
+//        netAcceleration = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2) + Math.pow(dZ, 2));
+        return netAcceleration > accelThreshold;
     }
 
     @Override
@@ -97,11 +116,12 @@ public class AgitationDetectorService extends Service implements SensorEventList
         if(isFirstUpdate){
             xPrevAccel = xNewAccel;
             yPrevAccel = yNewAccel;
-            xPrevAccel = zNewAccel;
+            zPrevAccel = zNewAccel;
+            isFirstUpdate = false;
         } else {
             xPrevAccel = xAccel;
             yPrevAccel = yAccel;
-            xPrevAccel = zAccel;
+            zPrevAccel = zAccel;
         }
         xAccel = xNewAccel;
         yAccel = yNewAccel;
